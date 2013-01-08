@@ -1,0 +1,18 @@
+#version 330 core
+
+// Interpolated values from the vertex shaders
+in float height;
+
+// Ouput data
+out vec3 color;
+
+uniform int depth;
+
+void main(){
+  if (ht < 0)           color = vec3(0.,       0.,        1.); //blue
+   else if (ht < 500)   color = vec3(0.,       ht/500,    0.); //->green
+   else if (ht < 1000)  color = vec3(ht/500-1, 1.,        0.); //->yellow
+   else if (ht < 1500)  color = vec3(1.,       2.-ht/500, 0.); //->red
+   else                 color = vec3(1.,       1.,        1.); //white 
+
+}
