@@ -1,7 +1,7 @@
 #version 330 core
 
 // Interpolated values from the vertex shaders
-in float height;
+in float ht;
 
 // Ouput data
 out vec3 color;

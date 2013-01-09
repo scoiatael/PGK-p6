@@ -4,20 +4,12 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/arch/luki/Documents/PGK/PGK-p6/external/glew-1.5.8/src/glew.c" "/home/arch/luki/Documents/PGK/PGK-p6/external/CMakeFiles/GLEW_158.dir/glew-1.5.8/src/glew.c.o"
+  "/home/luki/Documents/PGK/p6/PGK-p6/external/glew-1.5.8/src/glew.c" "/home/luki/Documents/PGK/p6/PGK-p6/external/CMakeFiles/GLEW_158.dir/glew-1.5.8/src/glew.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 SET(CMAKE_TARGET_DEFINITIONS
-  "TW_STATIC"
-  "TW_NO_LIB_PRAGMA"
-  "TW_NO_DIRECT3D"
-  "GLEW_STATIC"
-  "_CRT_SECURE_NO_WARNINGS"
-  "_GLFW_HAS_DLOPEN"
-  "_GLFW_HAS_XRANDR"
-  "_UNIX"
   "TW_STATIC"
   "TW_NO_LIB_PRAGMA"
   "TW_NO_DIRECT3D"

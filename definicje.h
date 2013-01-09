@@ -23,6 +23,7 @@ using namespace glm;
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 struct mcc
 {
@@ -42,9 +43,10 @@ struct mcc
 };
 
 void InitGraphics();
-void InitVBOs(GLuint vaoObject1, unsigned int numberOfVertices, GLuint vertexBufferObject, GLuint indexBufferObject);
-void DrawVBOs(GLuint vaoObject1, unsigned int indexDataSize);
-void CleanVBOs(GLuint vaoObject1);
-void loadVertices(string filename, unsigned short* arg);
-void genIndices(unsigned int* indices, unsigned int& density);
+void InitVBOs(GLuint& vaoObject1, const unsigned int& numberOfVertices, GLuint& vertexBufferObject, GLuint& indexBufferObject);
+void DrawVBOs(const GLuint& vaoObject1, const unsigned int& indexDataSize);
+void CleanVBOs(const GLuint& vaoObject1);
+void loadVertices(const std::string& filename, unsigned short int* arg);
+void genIndices(unsigned int* indices, const unsigned int& density);
+void parse_args(const int& argc, char** argv, std::vector<std::string>& arg);
 #endif
