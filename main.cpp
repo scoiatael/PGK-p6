@@ -1,5 +1,30 @@
 #include "definicje.h"
 
+void init(GLuint& vaoObject1,GLuint& vertexBufferObject,GLuint& indexBufferObject)
+{
+  glGenVertexArrays(1, &vaoObject1);
+  glBindVertexArray(vaoObject1);
+  glGenBuffers(1, &vertexBufferObject);
+  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
+  glVertexAttribPointer(
+          0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+          3,                  // size
+          GL_INT,           // type
+          GL_FALSE,           // normalized?
+          0,                  // stride
+          (void*)0            // array buffer offset
+    );
+}
+
+void draw(GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int numberOfVertices)
+{
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
+    glDrawElements(GL_TRIANGLES,numberOfVertices, GL_UNSIGNED_INT,0);
+}
+
+
 int main( int argc, char** argv )
 {
 
@@ -31,7 +56,7 @@ int main( int argc, char** argv )
   glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
   // Camera matrix
   glm::mat4 View       = glm::lookAt(
-                                                          glm::vec3(0,0,1), // Camera is at (4,3,-3), in World Space
+                                                          glm::vec3(0,0,10), // Camera is at (4,3,-3), in World Space
                                                           glm::vec3(0,0,0), // and looks at the origin
                                                           glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                              );
@@ -40,29 +65,26 @@ int main( int argc, char** argv )
   // Our ModelViewProjection : multiplication of our 3 matrices
 	
   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
-
-  GLuint vaoObject1, vertexBufferObject, indexBufferObject;
-//  unsigned int numberOfVertices=1201*1201, density=1, numberOfIndices=6*(1201/density)*(1201/density);
-//  std::cout << "Allocating memory.. Need " << 3*numberOfVertices*sizeof(short int) + numberOfIndices*sizeof(int) << "\n";
-//  unsigned short int* vertexPositions = new(unsigned short int[3*numberOfVertices]);
-//  unsigned int* indices = new(unsigned int[numberOfIndices]);
-//  std::cout << "Done.\n";
-//  loadVertices(file_names[0], vertexPositions);
-//  genIndices(indices, 1);
-//  InitVBOs(vaoObject1, numberOfVertices, vertexBufferObject, indexBufferObject);
+/*
+  unsigned int numberOfVertices=1201*1201, density=1, numberOfIndices=6*(1201/density)*(1201/density);
+  std::cout << "Allocating memory.. Need " << 3*numberOfVertices*sizeof(short int) + numberOfIndices*sizeof(int) << "\n";
+  GLint* vertexPositions = new(int[3*numberOfVertices]);
+  GLuint* indices = new(unsigned int[numberOfIndices]);
+  std::cout << "Done.\n";
+  loadVertices(file_names[0], vertexPositions);
+  genIndices(indices, density); */
 //  glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
 //  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    GLuint VertexArrayID;
-    glGenVertexArrays(1, &VertexArrayID);
-    glBindVertexArray(VertexArrayID);
-    GLuint vertexbuffer;
-    glGenBuffers(1, &vertexbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-  
-    GLfloat vertexPositions[] = { -1., -1., -1., 0., 1., 0., 1., -1. , -1.};
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
-//  unsigned int indices[] = { 0, 3, 4, 3, 1, 4};
-//  glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6, indices, GL_STATIC_DRAW);
+
+  GLuint vaoObject1, vertexBufferObject, indexBufferObject;
+  init(vaoObject1,vertexBufferObject,indexBufferObject);
+  GLint vertexPositions[] = { -1, -1, -1, 0, 1, 0, 1, -1, -1, 1, 1, 0};
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
+  glGenBuffers(1, &indexBufferObject);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
+  GLuint indices[] = {0, 1, 2, 2, 1, 3};
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 
   do{
 
@@ -77,17 +99,7 @@ int main( int argc, char** argv )
     glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
    // DrawVBOs(vaoObject1, numberOfIndices);
-    glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glVertexAttribPointer(
-            0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-            3,                  // size
-            GL_FLOAT,           // type
-            GL_FALSE,           // normalized?
-            0,                  // stride
-            (void*)0            // array buffer offset
-      );
-    glDrawArrays(GL_TRIANGLES,0,3);
+    draw(vertexBufferObject, indexBufferObject, 6);
     // Swap buffers
     glfwSwapBuffers();
 
