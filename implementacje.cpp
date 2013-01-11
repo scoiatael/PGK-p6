@@ -85,46 +85,12 @@ void InitGraphics()
   std::cout << "Initialized GL Components.\n";
 }
 
-void InitVBOs(GLuint& vaoObject1, const unsigned int& numberOfVertices, GLuint& vertexBufferObject, GLuint& indexBufferObject)
-{
-  std::cout << "Init start.\n";
-  glGenVertexArrays(1, &vaoObject1);
-  glBindVertexArray(vaoObject1);
-  
-  glGenBuffers(1, &vertexBufferObject);
-  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
-  glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 3, GL_SHORT, GL_FALSE, 0, (void*)0);
-  glGenBuffers(1, &indexBufferObject);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
-  
-  glBindVertexArray(0);
-  std::cout << "Init done.\n";
-}
-
-void DrawVBOs(const GLuint& vaoObject1, const unsigned int& indexDataSize)
-{
-  glBindVertexArray(vaoObject1);
-  //glDrawElements(GL_TRIANGLES, indexDataSize, GL_UNSIGNED_INT, 0); 
-  glDrawArrays(GL_TRIANGLES, 0, 3);
-  glBindVertexArray(0);
-}
-
-void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& buffer2)
-{
-  glBindVertexArray(vaoObject1);
-  glDisableVertexAttribArray(0);
-  glDisableVertexAttribArray(1);
-  glDeleteBuffers(1, &buffer1);
-  glDeleteBuffers(1, &buffer2);
-  glDeleteVertexArrays(1, &vaoObject1);
-}
 void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side)
 {
   std::cout << "Loading vertices from " << filename << "...\n";
   std::fstream file;
   memset(&arg[0], 0, sizeof(int)*side*side*3);
-  unsigned int max_h=0;
+  int max_h=0;
   if(bin)
   {
     file.open(filename.c_str(), std::fstream::in | std::fstream::binary);
@@ -132,12 +98,17 @@ void loadVertices(const std::string& filename, std::vector<int>& arg, const bool
     {
       char p1, p2;
       file >> p1 >> p2;
-      arg[j++]   = i%side;
-      arg[j++]  = i/side;
-      arg[j++]  = p1*256+p2;
-      std::cout <<  i << "->"  <<  arg[j-3] << " " << arg[j-2] << " " << arg[j-1] << std::endl;
-      if(arg[3*i+2]>max_h)
-        max_h=arg[3*i+2];
+      arg[j]   = i%side;
+      j++;
+      arg[j]  = i/side;
+      j++;
+      arg[j]  = p1*256+p2;
+      if(arg[j]>9000 ||arg[j]<-500)
+        arg[j]=0;
+//      std::cout <<  i << "->"  <<  arg[j-2] << " " << arg[j-1] << " " << arg[j] << std::endl;
+      if(arg[j]>max_h)
+        max_h=arg[j];
+      j++;
     }
   }
   else
@@ -147,32 +118,45 @@ void loadVertices(const std::string& filename, std::vector<int>& arg, const bool
     {
       int p;
       file >> p;
-      arg[j++]  = i%side;
-      arg[j++]  = i/side;
-      arg[j++]  = p;
+      arg[j]  = i%side;
+      j++;
+      arg[j]  = i/side;
+      j++;
+      arg[j]  = p;
+      if(arg[j]>9000 ||arg[j]<-500)
+        arg[j]=0;
       std::cout <<  i << "->"  <<  arg[j-3] << " " << arg[j-2] << " " << arg[j-1] << std::endl;
-      if(arg[3*i+2]>max_h)
-        max_h=arg[3*i+2];
+      if(arg[j]>max_h)
+        max_h=arg[j];
+      j++;
     }
   }
   file.close();
   std::cout << "Done. Maximal height is " << max_h << "\n";
 }
 
-void genIndices(unsigned int* indices, const unsigned int& side, const unsigned int& density)
+void genIndices(std::vector< GLuint >& indices, const unsigned int& side, const unsigned int& interval)
 {
-  assert(density!=0);
-  for(int y=1,i=0; y<side; y+=density)
-    for(int x=1; x<side; x+=density)
+  std::cout << "Generating indices with interval:" << interval << "..\n";
+  assert(interval!=0);
+  for(int y=1,i=0; y<side; y+=interval)
+    for(int x=1; x<side; x+=interval)
     {
-      indices[i++] = (y-1)*side+x-1;
-      indices[i++] = y*side+x-1;
-      indices[i++] = (y-1)*side+x;
-      indices[i++] = (y-1)*side+x;
-      indices[i++] = y*side+x-1;
-      indices[i++] = y*side+x;
-      for(int j=6;j>0;j--)
+      indices[i] = (y-1)*side+x-1;
+      i++;
+      indices[i] = y*side+x-1;
+      i++;
+      indices[i] = (y-1)*side+x;
+      i++;
+      indices[i] = (y-1)*side+x;
+      i++;
+      indices[i] = y*side+x-1;
+      i++;
+      indices[i] = y*side+x;
+      i++;
+/*      for(int j=6;j>0;j--)
         std::cout << j << "->" << indices[i-j] << " ";
-      std::cout << std::endl;
+      std::cout << std::endl;*/
     }
+  std::cout << "Done.\n";
 }

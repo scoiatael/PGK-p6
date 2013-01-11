@@ -24,6 +24,14 @@ void draw(GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int nu
     glDrawElements(GL_TRIANGLES,numberOfVertices, GL_UNSIGNED_INT,0);
 }
 
+void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& buffer2)
+{
+  glBindVertexArray(vaoObject1);
+  glDisableVertexAttribArray(0);
+  glDeleteBuffers(1, &buffer1);
+  glDeleteBuffers(1, &buffer2);
+  glDeleteVertexArrays(1, &vaoObject1);
+}
 
 int main( int argc, char** argv )
 {
@@ -55,10 +63,10 @@ int main( int argc, char** argv )
   // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
   glm::mat4 Projection = 
    // glm::mat4(1.0f);
-glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
   // Camera matrix
   glm::mat4 View       = glm::lookAt(
-                                                          glm::vec3(1,1,3), // Camera is at (4,3,-3), in World Space
+                                                          glm::vec3(1,1,10), // Camera is at (4,3,-3), in World Space
                                                           glm::vec3(1,1,0), // and looks at the origin
                                                           glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                              );
@@ -69,7 +77,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
   
   const int side(10);
-  unsigned int numberOfVertices=side*side, density=1, numberOfIndices=6*((side-1)/(density))*((side-1)/(density));
+  unsigned int density=1;
+  unsigned int numberOfVertices=side*side, numberOfIndices=6*((side-1)/(density))*((side-1)/(density));
   std::vector< int > vertexPositionsVec(3*numberOfVertices);
   int* vertexPositions = &vertexPositionsVec[0];
   std::vector< GLuint> indicesVec(numberOfIndices);
@@ -82,9 +91,10 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
   GLuint vaoObject1, vertexBufferObject, indexBufferObject;
   init(vaoObject1,vertexBufferObject,indexBufferObject);
   glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
+  std::cout << "Init done.\n";
   glGenBuffers(1, &indexBufferObject);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
-  genIndices(indices, side, 1);
+  genIndices(indicesVec, side, density);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*numberOfIndices, indices, GL_STATIC_DRAW);
   
   float start = mcc::get_time();
