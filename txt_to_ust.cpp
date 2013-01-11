@@ -20,7 +20,7 @@ int main(int argc, char** argv)
   c2 = getc(stdin);
   while(c1!=EOF && c2!=EOF)
   {
-    cout << 60*c1+c2 << " ";
+    cout << 256*c1+c2 << " ";
     c1 = getc(stdin);
     c2 = getc(stdin);
   }
