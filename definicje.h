@@ -4,6 +4,7 @@
 // Include standard headers
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // Include GLEW
 #include <GL/glew.h>
@@ -24,6 +25,7 @@ using namespace glm;
 #include <iostream>
 #include <algorithm>
 #include <fstream>
+#include <cassert>
 
 struct mcc
 {
@@ -45,8 +47,8 @@ struct mcc
 void InitGraphics();
 void InitVBOs(GLuint& vaoObject1, const unsigned int& numberOfVertices, GLuint& vertexBufferObject, GLuint& indexBufferObject);
 void DrawVBOs(const GLuint& vaoObject1, const unsigned int& indexDataSize);
-void CleanVBOs(const GLuint& vaoObject1);
-void loadVertices(const std::string& filename, unsigned short int* arg);
-void genIndices(unsigned int* indices, const unsigned int& density);
+void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& buffer2);
+void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side);
+void genIndices(unsigned int* indices, const unsigned int& side, const unsigned int& density);
 void parse_args(const int& argc, char** argv, std::vector<std::string>& arg);
 #endif

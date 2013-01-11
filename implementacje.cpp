@@ -110,44 +110,69 @@ void DrawVBOs(const GLuint& vaoObject1, const unsigned int& indexDataSize)
   glBindVertexArray(0);
 }
 
-void CleanVBOs(const GLuint& vaoObject1)
+void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& buffer2)
 {
   glBindVertexArray(vaoObject1);
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
+  glDeleteBuffers(1, &buffer1);
+  glDeleteBuffers(1, &buffer2);
   glDeleteVertexArrays(1, &vaoObject1);
 }
-void loadVertices(const std::string& filename, unsigned short int* arg)
+void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side)
 {
   std::cout << "Loading vertices from " << filename << "...\n";
   std::fstream file;
-  file.open(filename.c_str(), std::fstream::in);
-  unsigned short max_h=0;
-  for(unsigned int i=0; i<1201*1201; i++)
+  memset(&arg[0], 0, sizeof(int)*side*side*3);
+  unsigned int max_h=0;
+  if(bin)
   {
-    char p1, p2;
-    file >> p1 >> p2;
-    arg[3*i]    = i%1201;
-    arg[3*i+1]  = i/1201;
-    arg[3*i+2]  = p1*256+p2;
-    if(arg[3*i+2]>max_h)
-      max_h=arg[3*i+2];
+    file.open(filename.c_str(), std::fstream::in | std::fstream::binary);
+    for(int i=0, j=0; i<side*side; i++)
+    {
+      char p1, p2;
+      file >> p1 >> p2;
+      arg[j++]   = i%side;
+      arg[j++]  = i/side;
+      arg[j++]  = p1*256+p2;
+      std::cout <<  i << "->"  <<  arg[j-3] << " " << arg[j-2] << " " << arg[j-1] << std::endl;
+      if(arg[3*i+2]>max_h)
+        max_h=arg[3*i+2];
+    }
+  }
+  else
+  {
+    file.open(filename.c_str(), std::fstream::in);
+    for(int i=0, j=0; i<side*side; i++)
+    {
+      int p;
+      file >> p;
+      arg[j++]  = i%side;
+      arg[j++]  = i/side;
+      arg[j++]  = p;
+      std::cout <<  i << "->"  <<  arg[j-3] << " " << arg[j-2] << " " << arg[j-1] << std::endl;
+      if(arg[3*i+2]>max_h)
+        max_h=arg[3*i+2];
+    }
   }
   file.close();
   std::cout << "Done. Maximal height is " << max_h << "\n";
 }
 
-void genIndices(unsigned int* indices, const unsigned int& density)
+void genIndices(unsigned int* indices, const unsigned int& side, const unsigned int& density)
 {
-  //ASSERT(density!=0)
-  for(int y=1,i=0; y<1201; y+=density)
-    for(int x=1; x<1201; x+=density)
+  assert(density!=0);
+  for(int y=1,i=0; y<side; y+=density)
+    for(int x=1; x<side; x+=density)
     {
-      indices[i++] = y*1201+x-1;
-      indices[i++] = y*1201+x;
-      indices[i++] = (y-1)*1201+x-1;
-      indices[i++] = y*1201+x;
-      indices[i++] = (y-1)*1201+x;
-      indices[i++] = (y-1)*1201-1;
+      indices[i++] = (y-1)*side+x-1;
+      indices[i++] = y*side+x-1;
+      indices[i++] = (y-1)*side+x;
+      indices[i++] = (y-1)*side+x;
+      indices[i++] = y*side+x-1;
+      indices[i++] = y*side+x;
+      for(int j=6;j>0;j--)
+        std::cout << j << "->" << indices[i-j] << " ";
+      std::cout << std::endl;
     }
 }

@@ -39,7 +39,7 @@ int main( int argc, char** argv )
   glfwEnable( GLFW_STICKY_KEYS );
 
   // Dark blue background
-  glClearColor(0.0f, 0.0f, 0.1f, 0.0f);
+  glClearColor(0.0f, 0.0f, 0.5f, 0.0f);
 
   // Enable depth test
 //  glEnable(GL_DEPTH_TEST);
@@ -53,11 +53,13 @@ int main( int argc, char** argv )
   GLuint MatrixID = glGetUniformLocation(programID, "MVP");
   std::cout << "Got uniforms..\n";
   // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-  glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+  glm::mat4 Projection = 
+   // glm::mat4(1.0f);
+glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
   // Camera matrix
   glm::mat4 View       = glm::lookAt(
-                                                          glm::vec3(0,0,10), // Camera is at (4,3,-3), in World Space
-                                                          glm::vec3(0,0,0), // and looks at the origin
+                                                          glm::vec3(1,1,3), // Camera is at (4,3,-3), in World Space
+                                                          glm::vec3(1,1,0), // and looks at the origin
                                                           glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                              );
   // Model matrix : an identity matrix (model will be at the origin)
@@ -65,29 +67,28 @@ int main( int argc, char** argv )
   // Our ModelViewProjection : multiplication of our 3 matrices
 	
   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
-/*
-  unsigned int numberOfVertices=1201*1201, density=1, numberOfIndices=6*(1201/density)*(1201/density);
-  std::cout << "Allocating memory.. Need " << 3*numberOfVertices*sizeof(short int) + numberOfIndices*sizeof(int) << "\n";
-  GLint* vertexPositions = new(int[3*numberOfVertices]);
-  GLuint* indices = new(unsigned int[numberOfIndices]);
-  std::cout << "Done.\n";
-  loadVertices(file_names[0], vertexPositions);
-  genIndices(indices, density); */
+  
+  const int side(10);
+  unsigned int numberOfVertices=side*side, density=1, numberOfIndices=6*((side-1)/(density))*((side-1)/(density));
+  std::vector< int > vertexPositionsVec(3*numberOfVertices);
+  int* vertexPositions = &vertexPositionsVec[0];
+  std::vector< GLuint> indicesVec(numberOfIndices);
+  GLuint* indices = &indicesVec[0];
+  std::cout << numberOfVertices << " " << numberOfIndices << std::endl;
+  loadVertices(file_names[0], vertexPositionsVec, true, side);
 //  glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
 //  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
   GLuint vaoObject1, vertexBufferObject, indexBufferObject;
   init(vaoObject1,vertexBufferObject,indexBufferObject);
-  GLint vertexPositions[] = { -1, -1, -1, 0, 1, 0, 1, -1, -1, 1, 1, 0};
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
   glGenBuffers(1, &indexBufferObject);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
-  GLuint indices[] = {0, 1, 2, 2, 1, 3};
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-
+  genIndices(indices, side, 1);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*numberOfIndices, indices, GL_STATIC_DRAW);
+  
+  float start = mcc::get_time();
   do{
-
     // Clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -96,7 +97,8 @@ int main( int argc, char** argv )
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+    glm::mat4 temp=glm::rotate(MVP, ((float)mcc::get_time()-start)/100000, glm::vec3(0, 1, 0));
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
 
    // DrawVBOs(vaoObject1, numberOfIndices);
     draw(vertexBufferObject, indexBufferObject, 6);
@@ -109,7 +111,7 @@ int main( int argc, char** argv )
 
   // Cleanup VBO and shader
   glDeleteProgram(programID);
-  CleanVBOs(vaoObject1);
+  CleanVBOs(vaoObject1, vertexBufferObject, indexBufferObject);
 
   // Close OpenGL window and terminate GLFW
   glfwTerminate();
