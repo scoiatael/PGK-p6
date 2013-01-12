@@ -105,7 +105,7 @@ void loadVertices(const std::string& filename, std::vector<int>& arg, const bool
       arg[j]  = p1*256+p2;
       if(arg[j]>9000 ||arg[j]<-500)
         arg[j]=0;
-//      std::cout <<  i << "->"  <<  arg[j-2] << " " << arg[j-1] << " " << arg[j] << std::endl;
+      std::cout <<  i << "->"  <<  arg[j-2] << " " << arg[j-1] << " " << arg[j] << std::endl;
       if(arg[j]>max_h)
         max_h=arg[j];
       j++;
@@ -154,9 +154,9 @@ void genIndices(std::vector< GLuint >& indices, const unsigned int& side, const 
       i++;
       indices[i] = y*side+x;
       i++;
-/*      for(int j=6;j>0;j--)
+      for(int j=6;j>0;j--)
         std::cout << j << "->" << indices[i-j] << " ";
-      std::cout << std::endl;*/
+      std::cout << std::endl;
     }
   std::cout << "Done.\n";
 }

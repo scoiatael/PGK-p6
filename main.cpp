@@ -1,4 +1,6 @@
 #include "definicje.h"
+int x,y,z;
+float ox, oy;
 
 void init(GLuint& vaoObject1,GLuint& vertexBufferObject,GLuint& indexBufferObject)
 {
@@ -21,7 +23,7 @@ void draw(GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int nu
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
-    glDrawElements(GL_TRIANGLES,numberOfVertices, GL_UNSIGNED_INT,0);
+    glDrawElements(GL_TRIANGLES, numberOfVertices, GL_UNSIGNED_INT,0);
 }
 
 void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& buffer2)
@@ -31,6 +33,49 @@ void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& bu
   glDeleteBuffers(1, &buffer1);
   glDeleteBuffers(1, &buffer2);
   glDeleteVertexArrays(1, &vaoObject1);
+}
+
+void GLFWCALL Key_Callback(int key, int action)
+{
+  if(action == GLFW_PRESS)
+  {
+//    std::cout << (char)key << " " << x <<" " << y << " " << z<< "\n";
+    switch(key)
+    {
+      case 'Q':
+        x++;
+        break;
+      case 'A':
+        x--;
+        break;
+      case 'W':
+        y++;
+        break;
+      case 'S':
+        y--;
+        break;
+      case 'E':
+        z++;
+        break;
+      case 'D':
+        z--;
+        break;
+      case 'R':
+        ox+=5;
+        break;
+      case 'F':
+        ox-=5;
+        break;
+      case 'T':
+        oy+=5;
+        break;
+      case 'G':
+        oy-=5;
+        break;
+
+
+    }
+  }
 }
 
 int main( int argc, char** argv )
@@ -50,9 +95,9 @@ int main( int argc, char** argv )
   glClearColor(0.0f, 0.0f, 0.5f, 0.0f);
 
   // Enable depth test
-//  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_DEPTH_TEST);
   // Accept fragment if it closer to the camera than the former one
-//  glDepthFunc(GL_LESS); 
+  glDepthFunc(GL_LESS); 
 
   // Create and compile our GLSL program from the shaders
   GLuint programID = LoadShaders( "tvs.vertexshader", "cfs.fragmentshader" );
@@ -76,7 +121,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
 	
   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
   
-  const int side(10);
+  const int side(4);
   unsigned int density=1;
   unsigned int numberOfVertices=side*side, numberOfIndices=6*((side-1)/(density))*((side-1)/(density));
   std::vector< int > vertexPositionsVec(3*numberOfVertices);
@@ -98,6 +143,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*numberOfIndices, indices, GL_STATIC_DRAW);
   
   float start = mcc::get_time();
+  glfwSetKeyCallback(Key_Callback);
   do{
     // Clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -107,11 +153,11 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glm::mat4 temp=glm::rotate(MVP, ((float)mcc::get_time()-start)/100000, glm::vec3(0, 1, 0));
+    glm::mat4 temp=glm::rotate( glm::rotate(glm::translate(MVP, vec3(x,y,z)), oy, glm::vec3(0, 1, 0)), ox, glm::vec3(1,0,0));
     glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
 
    // DrawVBOs(vaoObject1, numberOfIndices);
-    draw(vertexBufferObject, indexBufferObject, 6);
+    draw(vertexBufferObject, indexBufferObject, numberOfIndices);
     // Swap buffers
     glfwSwapBuffers();
 
