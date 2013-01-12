@@ -1,8 +1,10 @@
 #include "definicje.h"
 int x,y,z;
+unsigned int iBOindex;
 float ox, oy;
+const int maxLoD(10);
 
-void init(GLuint& vaoObject1,GLuint& vertexBufferObject,GLuint& indexBufferObject)
+void init(GLuint& vaoObject1,GLuint& vertexBufferObject)
 {
   glGenVertexArrays(1, &vaoObject1);
   glBindVertexArray(vaoObject1);
@@ -26,39 +28,40 @@ void draw(GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int nu
     glDrawElements(GL_TRIANGLES, numberOfVertices, GL_UNSIGNED_INT,0);
 }
 
-void CleanVBOs(const GLuint& vaoObject1, const GLuint& buffer1, const GLuint& buffer2)
+void CleanVBOs(GLuint& vaoObject1, GLuint* vBO, GLuint* iBO)
 {
   glBindVertexArray(vaoObject1);
   glDisableVertexAttribArray(0);
-  glDeleteBuffers(1, &buffer1);
-  glDeleteBuffers(1, &buffer2);
+  glDeleteBuffers(1, vBO);
+  glDeleteBuffers(maxLoD, iBO);
   glDeleteVertexArrays(1, &vaoObject1);
 }
 
 void GLFWCALL Key_Callback(int key, int action)
 {
+  int mod=100;
   if(action == GLFW_PRESS)
   {
 //    std::cout << (char)key << " " << x <<" " << y << " " << z<< "\n";
     switch(key)
     {
       case 'Q':
-        x++;
+        x+=mod;
         break;
       case 'A':
-        x--;
+        x-=mod;
         break;
       case 'W':
-        y++;
+        y+=mod;
         break;
       case 'S':
-        y--;
+        y-=mod;
         break;
       case 'E':
-        z++;
+        z+=mod;
         break;
       case 'D':
-        z--;
+        z-=mod;
         break;
       case 'R':
         ox+=5;
@@ -71,6 +74,14 @@ void GLFWCALL Key_Callback(int key, int action)
         break;
       case 'G':
         oy-=5;
+        break;
+      case GLFW_KEY_UP:
+        iBOindex+=1;
+        iBOindex%=maxLoD;
+        break;
+      case GLFW_KEY_DOWN:
+        iBOindex-=1;
+        iBOindex%=maxLoD;
         break;
 
 
@@ -108,10 +119,10 @@ int main( int argc, char** argv )
   // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
   glm::mat4 Projection = 
    // glm::mat4(1.0f);
-glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
+glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
   // Camera matrix
   glm::mat4 View       = glm::lookAt(
-                                                          glm::vec3(1,1,10), // Camera is at (4,3,-3), in World Space
+                                                          glm::vec3(1,1,3000), // Camera is at (4,3,-3), in World Space
                                                           glm::vec3(1,1,0), // and looks at the origin
                                                           glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                              );
@@ -121,26 +132,32 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
 	
   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
   
-  const int side(4);
-  unsigned int density=1;
-  unsigned int numberOfVertices=side*side, numberOfIndices=6*((side-1)/(density))*((side-1)/(density));
+  const int side(1201);
+  
+  //Vertices:
+  unsigned int numberOfVertices=side*side;
   std::vector< int > vertexPositionsVec(3*numberOfVertices);
   int* vertexPositions = &vertexPositionsVec[0];
-  std::vector< GLuint> indicesVec(numberOfIndices);
-  GLuint* indices = &indicesVec[0];
-  std::cout << numberOfVertices << " " << numberOfIndices << std::endl;
   loadVertices(file_names[0], vertexPositionsVec, true, side);
-//  glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
-//  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-  GLuint vaoObject1, vertexBufferObject, indexBufferObject;
-  init(vaoObject1,vertexBufferObject,indexBufferObject);
+  GLuint vaoObject1, vertexBufferObject;
+  init(vaoObject1,vertexBufferObject);
   glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
+
+  //Indices::
+  GLuint indexBufferObject, iBOs[maxLoD], numberOfIndices;
+  std::vector<GLuint> nOIs(5);
+  glGenBuffers(maxLoD, iBOs);
+  for(unsigned int density=1, i=0;i<maxLoD; i++, density*=2)
+  {  
+    nOIs[i]=6*((side-1)/(density))*((side-1)/(density));
+    std::vector< GLuint> indicesVec(nOIs[i]);
+    GLuint* indices = &indicesVec[0];
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iBOs[i]);
+    genIndices(indicesVec, side, density);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*nOIs[i], indices, GL_STATIC_DRAW);
+  }
+  
   std::cout << "Init done.\n";
-  glGenBuffers(1, &indexBufferObject);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
-  genIndices(indicesVec, side, density);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*numberOfIndices, indices, GL_STATIC_DRAW);
   
   float start = mcc::get_time();
   glfwSetKeyCallback(Key_Callback);
@@ -157,6 +174,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
     glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
 
    // DrawVBOs(vaoObject1, numberOfIndices);
+    indexBufferObject=iBOs[iBOindex];
+    numberOfIndices=nOIs[iBOindex];
     draw(vertexBufferObject, indexBufferObject, numberOfIndices);
     // Swap buffers
     glfwSwapBuffers();
@@ -167,7 +186,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
 
   // Cleanup VBO and shader
   glDeleteProgram(programID);
-  CleanVBOs(vaoObject1, vertexBufferObject, indexBufferObject);
+  CleanVBOs(vaoObject1, &vertexBufferObject, iBOs);
 
   // Close OpenGL window and terminate GLFW
   glfwTerminate();
