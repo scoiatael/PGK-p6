@@ -45,7 +45,7 @@ struct mcc
 };
 
 void InitGraphics();
-void loadVertices(const std::string& filename, std::vector< int>& arg, const bool& bin, const int& side);
+void loadVertices(const std::string& filename, std::vector< int>& arg, const bool& bin, const int& side, std::pair<int,int>& edge, int& height);
 void genIndices(std::vector<GLuint>& indices, const unsigned int& side, const unsigned int& density);
 void parse_args(const int& argc, char** argv, std::vector<std::string>& arg);
 #endif

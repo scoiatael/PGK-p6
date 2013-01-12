@@ -85,7 +85,7 @@ void InitGraphics()
   std::cout << "Initialized GL Components.\n";
 }
 
-void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side)
+void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side, std::pair<int,int>& edge, int& height)
 {
   std::cout << "Loading vertices from " << filename << "...\n";
   std::fstream file;
@@ -135,6 +135,14 @@ void loadVertices(const std::string& filename, std::vector<int>& arg, const bool
   }
   file.close();
   std::cout << "Done. Maximal height is " << max_h << "\n";
+  height = max_h;
+  char r,p;
+  sscanf(filename.c_str(), "%c%d%c%d",&r, &edge.first, &p, &edge.second); 
+  if(r=='S')
+    edge.first*=-1;
+  if(p=='W')
+    edge.second*=-1;
+  std::cout << "Edges are: " << edge.first << " " << edge.second << std::endl; 
 }
 
 void genIndices(std::vector< GLuint >& indices, const unsigned int& side, const unsigned int& interval)

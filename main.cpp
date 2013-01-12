@@ -4,37 +4,24 @@ unsigned int iBOindex;
 float ox, oy;
 const int maxLoD(10);
 
-void init(GLuint& vaoObject1,GLuint& vertexBufferObject)
+void init(GLuint& vaoObject1)
 {
-  glGenVertexArrays(1, &vaoObject1);
-  glBindVertexArray(vaoObject1);
-  glGenBuffers(1, &vertexBufferObject);
-  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
-  glVertexAttribPointer(
-          0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-          3,                  // size
-          GL_INT,           // type
-          GL_FALSE,           // normalized?
-          0,                  // stride
-          (void*)0            // array buffer offset
-    );
 }
 
-void draw(GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int numberOfVertices)
+void draw(GLuint& vaoObject, GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int numberOfVertices)
 {
+    glBindVertexArray(vaoObject);
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject);
     glDrawElements(GL_TRIANGLES, numberOfVertices, GL_UNSIGNED_INT,0);
 }
 
-void CleanVBOs(GLuint& vaoObject1, GLuint* vBO, GLuint* iBO)
+void CleanVBOs(GLuint* vaoObjects, GLuint* vBO, const unsigned int& vBOsize,  GLuint* iBO)
 {
-  glBindVertexArray(vaoObject1);
-  glDisableVertexAttribArray(0);
-  glDeleteBuffers(1, vBO);
+  glDeleteBuffers(vBOsize, vBO);
   glDeleteBuffers(maxLoD, iBO);
-  glDeleteVertexArrays(1, &vaoObject1);
+  glDeleteVertexArrays(vBOsize, vaoObjects);
 }
 
 void GLFWCALL Key_Callback(int key, int action)
@@ -116,32 +103,34 @@ int main( int argc, char** argv )
   // Get a handle for our "MVP" uniform
   GLuint MatrixID = glGetUniformLocation(programID, "MVP");
   std::cout << "Got uniforms..\n";
-  // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-  glm::mat4 Projection = 
-   // glm::mat4(1.0f);
-glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
-  // Camera matrix
-  glm::mat4 View       = glm::lookAt(
-                                                          glm::vec3(1,1,3000), // Camera is at (4,3,-3), in World Space
-                                                          glm::vec3(1,1,0), // and looks at the origin
-                                                          glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-                                             );
-  // Model matrix : an identity matrix (model will be at the origin)
-  glm::mat4 Model      = glm::mat4(1.0f);
-  // Our ModelViewProjection : multiplication of our 3 matrices
-	
-  glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
   
   const int side(1201);
-  
+  const int vBOsize(file_names.size());
+
   //Vertices:
   unsigned int numberOfVertices=side*side;
-  std::vector< int > vertexPositionsVec(3*numberOfVertices);
-  int* vertexPositions = &vertexPositionsVec[0];
-  loadVertices(file_names[0], vertexPositionsVec, true, side);
-  GLuint vaoObject1, vertexBufferObject;
-  init(vaoObject1,vertexBufferObject);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
+  GLuint vaoObjects[vBOsize], vertexBufferObject, vBOs[vBOsize];
+  std::vector<std::pair<int, int> > edges(vBOsize);
+  glGenVertexArrays(vBOsize, vaoObjects);
+  glGenBuffers(vBOsize, vBOs);
+  int height;
+  for(unsigned int i=0; i< vBOsize;i++)
+  {
+    std::vector< int > vertexPositionsVec(3*numberOfVertices);
+    int* vertexPositions = &vertexPositionsVec[0];
+    loadVertices(file_names[i], vertexPositionsVec, true, side, edges[i], height);
+    glBindVertexArray(vaoObjects[i]);
+    glBindBuffer(GL_ARRAY_BUFFER, vBOs[i]);
+    glVertexAttribPointer(
+          0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+          3,                  // size
+          GL_INT,           // type
+          GL_FALSE,           // normalized?
+          0,                  // stride
+          (void*)0            // array buffer offset
+    );
+    glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
+  }
 
   //Indices::
   GLuint indexBufferObject, iBOs[maxLoD], numberOfIndices;
@@ -157,6 +146,25 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*nOIs[i], indices, GL_STATIC_DRAW);
   }
   
+  // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+  glm::mat4 Projection = 
+   // glm::mat4(1.0f);
+glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
+  // Camera matrix
+//  int xVw = edges[0].first*side, yVw = edges[0].second*side;
+  int xVw = 1, yVw = 1;
+  height = 3000;
+  glm::mat4 View       = glm::lookAt(
+                                                          glm::vec3(xVw,yVw,2*height), // Camera is at (4,3,-3), in World Space
+                                                          glm::vec3(xVw,yVw,0), // and looks at the origin
+                                                          glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+                                             );
+  // Model matrix : an identity matrix (model will be at the origin)
+  glm::mat4 Model      = glm::mat4(1.0f);
+  // Our ModelViewProjection : multiplication of our 3 matrices
+	
+  glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
+
   std::cout << "Init done.\n";
   
   float start = mcc::get_time();
@@ -170,13 +178,16 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glm::mat4 temp=glm::rotate( glm::rotate(glm::translate(MVP, vec3(x,y,z)), oy, glm::vec3(0, 1, 0)), ox, glm::vec3(1,0,0));
-    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
-
-   // DrawVBOs(vaoObject1, numberOfIndices);
+    glm::mat4 Vw=glm::rotate( glm::rotate(glm::translate(glm::mat4(1.0), vec3(x,y,z)), oy, glm::vec3(0, 1, 0)), ox, glm::vec3(1,0,0));
     indexBufferObject=iBOs[iBOindex];
     numberOfIndices=nOIs[iBOindex];
-    draw(vertexBufferObject, indexBufferObject, numberOfIndices);
+    for(unsigned int i=0; i<vBOsize;i++)
+    {
+      glm::mat4 temp =  MVP /** glm::translate(glm::mat4(1.0), vec3(edges[i].first*side*10, edges[i].second*side*10,0))*/ * Vw ;
+      glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
+      draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
+    }
+
     // Swap buffers
     glfwSwapBuffers();
 
@@ -186,8 +197,9 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
 
   // Cleanup VBO and shader
   glDeleteProgram(programID);
-  CleanVBOs(vaoObject1, &vertexBufferObject, iBOs);
+  CleanVBOs(vaoObjects, vBOs, vBOsize, iBOs);
 
+  std::cout << "Cleaning done, terminating..\n";
   // Close OpenGL window and terminate GLFW
   glfwTerminate();
 
