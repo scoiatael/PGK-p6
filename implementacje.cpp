@@ -149,24 +149,45 @@ void genIndices(std::vector< GLuint >& indices, const unsigned int& side, const 
 {
   std::cout << "Generating indices with interval:" << interval << "..\n";
   assert(interval!=0);
-  for(int y=interval,i=0; y<side; y+=interval)
-    for(int x=interval; x<side; x+=interval)
+  bool last_chance_x=false,last_chance_y=true;
+  int i=0;
+  for(int y=interval,x=0,lasty=0, lastx; y<side || last_chance_y; y+=interval)
+  {
+    last_chance_x=true;
+    if(y>=side)
     {
-      indices[i] = (y-interval)*side+x-interval;
+      if(lasty==side-1)
+        break;
+      last_chance_y=false;
+      y=side-1;
+    }
+    for(x=interval, lastx=0; x<side || last_chance_x; x+=interval)
+    {
+     if(x>=side)
+      {
+        if(lastx==side-1)
+          break;
+        last_chance_x=false;
+        x=side-1;
+      }
+      indices[i] = (lasty)*side+(lastx);
       i++;
-      indices[i] = y*side+x-interval;
+      indices[i] = y*side+(lastx);
       i++;
-      indices[i] = (y-interval)*side+x;
+      indices[i] = (lasty)*side+x;
       i++;
-      indices[i] = (y-interval)*side+x;
+      indices[i] = (lasty)*side+x;
       i++;
-      indices[i] = y*side+x-interval;
+      indices[i] = y*side+(lastx);
       i++;
       indices[i] = y*side+x;
       i++;
+      lastx=x;
 /*      for(int j=6;j>0;j--)
         std::cout << j << "->" << indices[i-j] << " ";
       std::cout << std::endl;*/
     }
-  std::cout << "Done.\n";
+    lasty=y;
+  }
+  std::cout << "Done Indices: " << i << ".\n";
 }

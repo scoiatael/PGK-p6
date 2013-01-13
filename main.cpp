@@ -3,6 +3,8 @@ int x,y,z;
 unsigned int iBOindex;
 float ox, oy;
 const int maxLoD(10);
+bool autolod=false;
+const double optfps(20);
 
 void init(GLuint& vaoObject1)
 {
@@ -26,23 +28,23 @@ void CleanVBOs(GLuint* vaoObjects, GLuint* vBO, const unsigned int& vBOsize,  GL
 
 void GLFWCALL Key_Callback(int key, int action)
 {
-  int mod=100;
+  int mod=500;
   if(action == GLFW_PRESS)
   {
-//    std::cout << (char)key << " " << x <<" " << y << " " << z<< "\n";
+//    std::cout << (char)key << " " << iBOindex <<  "\n";
     switch(key)
     {
       case 'Q':
-        x+=mod;
-        break;
-      case 'A':
         x-=mod;
         break;
+      case 'A':
+        x+=mod;
+        break;
       case 'W':
-        y+=mod;
+        y-=mod;
         break;
       case 'S':
-        y-=mod;
+        y+=mod;
         break;
       case 'E':
         z+=mod;
@@ -69,6 +71,9 @@ void GLFWCALL Key_Callback(int key, int action)
       case GLFW_KEY_DOWN:
         iBOindex-=1;
         iBOindex%=maxLoD;
+        break;
+      case GLFW_KEY_SPACE:
+        autolod=!autolod;
         break;
 
 
@@ -119,6 +124,8 @@ int main( int argc, char** argv )
     std::vector< int > vertexPositionsVec(3*numberOfVertices);
     int* vertexPositions = &vertexPositionsVec[0];
     loadVertices(file_names[i], vertexPositionsVec, true, side, edges[i], height);
+  //  edges[i].first-=edges[0].first;
+  //  edges[i].second-=edges[0].second;
     glBindVertexArray(vaoObjects[i]);
     glBindBuffer(GL_ARRAY_BUFFER, vBOs[i]);
     glVertexAttribPointer(
@@ -138,10 +145,11 @@ int main( int argc, char** argv )
   glGenBuffers(maxLoD, iBOs);
   for(unsigned int density=1, i=0;i<maxLoD; i++, density*=2)
   {  
-    nOIs[i]=6*((side-1)/(density))*((side-1)/(density));
+    nOIs[i]=6*((side-1)/(density)+1)*((side-1)/(density)+1);
     std::vector< GLuint> indicesVec(nOIs[i]);
     GLuint* indices = &indicesVec[0];
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iBOs[i]);
+    std::cout << "Density: " << density << " Number of indices: " << nOIs[i] << std::endl;
     genIndices(indicesVec, side, density);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*nOIs[i], indices, GL_STATIC_DRAW);
   }
@@ -149,10 +157,10 @@ int main( int argc, char** argv )
   // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
   glm::mat4 Projection = 
    // glm::mat4(1.0f);
-glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
+glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   // Camera matrix
 //  int xVw = edges[0].first*side, yVw = edges[0].second*side;
-  int xVw = 1, yVw = 1;
+  int xVw = 6000, yVw = 6000;
   height = 3000;
   glm::mat4 View       = glm::lookAt(
                                                           glm::vec3(xVw,yVw,2*height), // Camera is at (4,3,-3), in World Space
@@ -167,9 +175,30 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
 
   std::cout << "Init done.\n";
   
-  float start = mcc::get_time();
   glfwSetKeyCallback(Key_Callback);
+  
+  double last_time = glfwGetTime(), last_reset=last_time;
+  int FPScounter=0;
   do{
+    //time statistics:
+    FPScounter++;
+    double cur_time = glfwGetTime();
+    double FPS = 1/(cur_time-last_time);
+    if(autolod && abs(FPS-optfps)>4)
+    {
+      if(FPS<optfps && iBOindex<maxLoD)
+        iBOindex++;
+      if(FPS>optfps && iBOindex > 0)
+        iBOindex--;
+    }
+    if(cur_time-last_reset>=2)
+    {
+      std::cout << "True FPS: " << (float)FPScounter/(cur_time-last_reset) << " cur FPS: " << FPS << " lod: " << iBOindex << std::endl;
+      FPScounter=0;
+      last_reset=cur_time;
+    }
+    last_time=cur_time;
+
     // Clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -183,7 +212,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 20000.0f);
     numberOfIndices=nOIs[iBOindex];
     for(unsigned int i=0; i<vBOsize;i++)
     {
-      glm::mat4 temp =  MVP /** glm::translate(glm::mat4(1.0), vec3(edges[i].first*side*10, edges[i].second*side*10,0))*/ * Vw ;
+      glm::mat4 temp =  MVP * Vw * 
+        glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, -(edges[i].first-edges[0].first)*(side-5)*10,0)) ;
       glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
       draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
     }
