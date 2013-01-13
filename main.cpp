@@ -196,17 +196,17 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
     //time statistics:
     FPScounter++;
     double cur_time = glfwGetTime();
-    double FPS = 1/(cur_time-last_time);
-    if(autolod && abs(FPS-optfps)>4)
-    {
-      if(FPS<optfps && iBOindex<maxLoD)
-        iBOindex++;
-      if(FPS>optfps && iBOindex > 0)
-        iBOindex--;
-    }
     if(cur_time-last_reset>=2)
     {
-      std::cout << "True FPS: " << (float)FPScounter/(cur_time-last_reset) << " cur FPS: " << FPS << " lod: " << iBOindex << std::endl;
+      double FPS = (float)FPScounter/(cur_time-last_reset);
+      std::cout << "FPS: " << FPS << " lod: " << iBOindex << std::endl;
+      if(autolod && abs(FPS-optfps)>4)
+      {
+        if(FPS<optfps && iBOindex<maxLoD)
+          iBOindex++;
+        if(FPS>4*optfps && iBOindex > 0)
+          iBOindex--;
+      }
       FPScounter=0;
       last_reset=cur_time;
     }
