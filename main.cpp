@@ -8,16 +8,6 @@ const double optfps(20);
 char ball=0;
 
 
-vec3 test_coords(vec3 vertexPosition)
-{
-  vec4 temp =  vec4(vec3(vertexPosition.x*10, vertexPosition.y*10,vertexPosition.z), 1.0);
-  float R = 6400;
-  float N = R/sqrt(1-pow(cos(temp.x),2));
-  return vec3((N+temp.z)*cos(temp.x)*cos(temp.y), (N+temp.z)*cos(temp.x)*sin(temp.y), (N+temp.z)*sin(temp.x));
-}
-void init(GLuint& vaoObject1)
-{
-}
 
 void draw(GLuint& vaoObject, GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int numberOfVertices)
 {
@@ -177,7 +167,7 @@ int main( int argc, char** argv )
 glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   // Camera matrix
 //  int xVw = edges[0].first*side, yVw = edges[0].second*side;
-  int xVw = 6000, yVw = 6000;
+  int xVw = 6000, yVw = -6000;
   height = 3000;
   glm::mat4 View       = glm::lookAt(
                                                           glm::vec3(xVw,yVw,2*height), // Camera is at (4,3,-3), in World Space
@@ -198,8 +188,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   int FPScounter=0;
 
   //DEBUG
-  vec3 tempD = test_coords(edges_vec[0]);
-  std::cout << "1st pos: " << tempD.x << " " << tempD.y << " " << tempD.z << std::endl;
+ // vec3 tempD = test_coords(edges_vec[0]);
+ // std::cout << "1st pos: " << tempD.x << " " << tempD.y << " " << tempD.z << std::endl;
   do{
     //time statistics:
     FPScounter++;
@@ -228,13 +218,13 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glm::mat4 Vw=glm::rotate( glm::rotate(glm::translate(glm::mat4(1.0), vec3(x,y,z)), oy, glm::vec3(0, 1, 0)), ox, glm::vec3(1,0,0));
+    glm::mat4 Vw=glm::rotate( glm::rotate(glm::translate(glm::mat4(1.0), vec3(x,y,z)), oy, glm::vec3(0, 0, 1)), ox, glm::vec3(1,0,0));
     indexBufferObject=iBOs[iBOindex];
     numberOfIndices=nOIs[iBOindex];
     for(unsigned int i=0; i<vBOsize;i++)
     {
       glm::mat4 temp =  MVP * Vw * 
-        glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, -(edges[i].first-edges[0].first)*(side-5)*10,0)) ;
+        glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, (edges[i].first-edges[0].first)*(side-5)*10,0)) ;
       glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &temp[0][0]);
       draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
     }
