@@ -5,12 +5,20 @@ uniform mat4 MVP;
 
 out vec3 height;
 
+float M_PI = 3.14159265359;
+
 void main()
 {	
-  vec4 temp =  MVP * vec4(vec3(vertexPosition.x*10, vertexPosition.y*10,vertexPosition.z), 1.0);
-  float R = 64000.0;
-  float N = R/sqrt(1-pow(cos(temp.x),2));
-  gl_Position = vec4((N+temp.z)*cos(temp.x)*cos(temp.y), (N+temp.z)*cos(temp.x)*sin(temp.y), (N+temp.z)*sin(temp.x)/100, temp.w);
+  vec4 temp = MVP * vec4(vec3(vertexPosition.x*10, (-1)*vertexPosition.y*10,vertexPosition.z), 1.0);
+  float lon = temp.x/1201,
+          lat = temp.y/1201,
+          R = 6400+temp.z/10;
+  lat*=M_PI/180;
+  lon*=M_PI/180;
+  temp.x = R * cos(lat) * sin(lon);
+  temp.y = R * sin(lat);
+  temp.z = R * cos(lon)*cos(lat)-R;
+  gl_Position =  temp;
   height = vertexPosition;
 }
 

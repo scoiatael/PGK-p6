@@ -9,10 +9,10 @@ out vec3 color;
 
 void main(){
 double ht = height.z;
- if      (ht < 0.0  )   color = vec3(0.0,       0.0,        1.0); //blue
-       else if (ht < 500.0)   color = vec3(0.0,       ht/500.0,    0.0); //->green
-       else if (ht < 1000.0)  color = vec3(ht/500.0-1.0, 1.0,        0.0); //->yellow
-       else if (ht < 1500.0)  color = vec3(1.0,       2.0-ht/500.0, 0.0); //->red
-       else                 color = vec3(1.0,1.0,1.0);                //white
+ if            (ht < 0.0  )   color = vec3(0.0,          0.0,          1.0); //blue
+       else if (ht < 500.0)   color = vec3(0.0,          ht/500.0,     0.0); //->green
+       else if (ht < 1000.0)  color = vec3(ht/500.0-1.0, 1.0,          0.0); //->yellow
+       else if (ht < 1500.0)  color = vec3(1.0,          3.0-ht/500.0, 0.0); //->red
+       else                   color = vec3(1.0,          1.0,          1.0); //white
 
 }

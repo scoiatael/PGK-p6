@@ -8,7 +8,6 @@ const double optfps(20);
 char ball=0;
 
 
-
 void draw(GLuint& vaoObject, GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int numberOfVertices)
 {
     glBindVertexArray(vaoObject);
@@ -101,8 +100,11 @@ int main( int argc, char** argv )
 
   // Enable depth test
   glEnable(GL_DEPTH_TEST);
+  glEnable(GL_CULL_FACE);
   // Accept fragment if it closer to the camera than the former one
   glDepthFunc(GL_LESS); 
+  glFrontFace(GL_CCW);
+  glCullFace(GL_BACK);
 
   // Create and compile our GLSL program from the shaders
   GLuint programIDs[2] = { LoadShaders( "tvs.vertexshader", "cfs.fragmentshader" ), LoadShaders( "tvs2.vertexshader", "cfs.fragmentshader" )};
@@ -188,8 +190,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   int FPScounter=0;
 
   //DEBUG
- // vec3 tempD = test_coords(edges_vec[0]);
- // std::cout << "1st pos: " << tempD.x << " " << tempD.y << " " << tempD.z << std::endl;
+//  vec4 tempD = test_tvs_coords(MVP* glm::translate(glm::mat4(1.0), vec3((edges[0].second-edges[0].second)*(side-5)*10, (edges[0].first-edges[0].first)*(side-5)*10,0)),edges_vec[0]);
+//  std::cout << "1st pos: " << tempD.x << " " << tempD.y << " " << tempD.z << std::endl;
   do{
     //time statistics:
     FPScounter++;
