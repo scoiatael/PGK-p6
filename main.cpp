@@ -5,7 +5,16 @@ float ox, oy;
 const int maxLoD(10);
 bool autolod=false;
 const double optfps(20);
+char ball=0;
 
+
+vec3 test_coords(vec3 vertexPosition)
+{
+  vec4 temp =  vec4(vec3(vertexPosition.x*10, vertexPosition.y*10,vertexPosition.z), 1.0);
+  float R = 6400;
+  float N = R/sqrt(1-pow(cos(temp.x),2));
+  return vec3((N+temp.z)*cos(temp.x)*cos(temp.y), (N+temp.z)*cos(temp.x)*sin(temp.y), (N+temp.z)*sin(temp.x));
+}
 void init(GLuint& vaoObject1)
 {
 }
@@ -75,6 +84,9 @@ void GLFWCALL Key_Callback(int key, int action)
       case GLFW_KEY_SPACE:
         autolod=!autolod;
         break;
+      case GLFW_KEY_ENTER:
+        ball=1-ball;
+        break;
 
 
     }
@@ -103,14 +115,18 @@ int main( int argc, char** argv )
   glDepthFunc(GL_LESS); 
 
   // Create and compile our GLSL program from the shaders
-  GLuint programID = LoadShaders( "tvs.vertexshader", "cfs.fragmentshader" );
+  GLuint programIDs[2] = { LoadShaders( "tvs.vertexshader", "cfs.fragmentshader" ), LoadShaders( "tvs2.vertexshader", "cfs.fragmentshader" )};
   std::cout << "Linked shaders..\n";
   // Get a handle for our "MVP" uniform
-  GLuint MatrixID = glGetUniformLocation(programID, "MVP");
+  GLuint MatrixIDs[2] = {glGetUniformLocation(programIDs[0], "MVP"), glGetUniformLocation(programIDs[1], "MVP")};
   std::cout << "Got uniforms..\n";
   
   const int side(1201);
   const int vBOsize(file_names.size());
+
+//DEBUG
+  std::vector< vec3 > edges_vec;
+
 
   //Vertices:
   unsigned int numberOfVertices=side*side;
@@ -124,8 +140,9 @@ int main( int argc, char** argv )
     std::vector< int > vertexPositionsVec(3*numberOfVertices);
     int* vertexPositions = &vertexPositionsVec[0];
     loadVertices(file_names[i], vertexPositionsVec, true, side, edges[i], height);
-  //  edges[i].first-=edges[0].first;
-  //  edges[i].second-=edges[0].second;
+//    edges[i].first-=edges[0].first;
+//    edges[i].second-=edges[0].second;
+    edges_vec.push_back(vec3(vertexPositionsVec[0], vertexPositionsVec[1], vertexPositionsVec[2]));
     glBindVertexArray(vaoObjects[i]);
     glBindBuffer(GL_ARRAY_BUFFER, vBOs[i]);
     glVertexAttribPointer(
@@ -179,6 +196,10 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   
   double last_time = glfwGetTime(), last_reset=last_time;
   int FPScounter=0;
+
+  //DEBUG
+  vec3 tempD = test_coords(edges_vec[0]);
+  std::cout << "1st pos: " << tempD.x << " " << tempD.y << " " << tempD.z << std::endl;
   do{
     //time statistics:
     FPScounter++;
@@ -203,7 +224,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Use our shader
-    glUseProgram(programID);
+    glUseProgram(programIDs[ball]);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
@@ -214,7 +235,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
     {
       glm::mat4 temp =  MVP * Vw * 
         glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, -(edges[i].first-edges[0].first)*(side-5)*10,0)) ;
-      glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &temp[0][0]);
+      glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &temp[0][0]);
       draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
     }
 
@@ -226,7 +247,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
              glfwGetWindowParam( GLFW_OPENED ) );
 
   // Cleanup VBO and shader
-  glDeleteProgram(programID);
+  glDeleteProgram(programIDs[0]);
+  glDeleteProgram(programIDs[1]);
   CleanVBOs(vaoObjects, vBOs, vBOsize, iBOs);
 
   std::cout << "Cleaning done, terminating..\n";
