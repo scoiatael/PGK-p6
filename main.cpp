@@ -177,7 +177,7 @@ int main( int argc, char** argv )
 glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   // Camera matrix
 //  int xVw = edges[0].first*side, yVw = edges[0].second*side;
-  int xVw = 6000, yVw = 6000;
+  int xVw = 6000, yVw = -6000;
   height = 3000;
   glm::mat4 View       = glm::lookAt(
                                                           glm::vec3(xVw,yVw,2*height), // Camera is at (4,3,-3), in World Space
@@ -234,7 +234,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
     for(unsigned int i=0; i<vBOsize;i++)
     {
       glm::mat4 temp =  MVP * Vw * 
-        glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, -(edges[i].first-edges[0].first)*(side-5)*10,0)) ;
+        glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, (edges[i].first-edges[0].first)*(side-5)*10,0)) ;
       glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &temp[0][0]);
       draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
     }

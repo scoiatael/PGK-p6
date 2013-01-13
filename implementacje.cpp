@@ -57,32 +57,30 @@ void parse_args(const int& argc, char** argv, std::vector<std::string>& arg)
 }
 void InitGraphics()
 {
-  // Initialise GLFW
-  if( !glfwInit() )
-  {
-          fprintf( stderr, "Failed to initialize GLFW\n" );
-          exit(-1);
-  }
+	// Initialise GLFW
+	if( !glfwInit() )
+	{
+		fprintf( stderr, "Failed to initialize GLFW\n" );
+		exit(-1);
+	}
 
-  glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
-  glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
-  glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 3);
-  glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
+	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 2);
+	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 1);
 
-  // Open a window and create its OpenGL context
-  if( !glfwOpenWindow( 1024, 768, 0,0,0,0, 32,0, GLFW_WINDOW ) )
-  {
-          fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-          glfwTerminate();
-          exit(-1);
-  }
+	// Open a window and create its OpenGL context
+	if( !glfwOpenWindow( 1024, 768, 0,0,0,0, 32,0, GLFW_WINDOW ) )
+	{
+		fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
+		glfwTerminate();
+		exit(-1);
+	}
 
-  // Initialize GLEW
-  if (glewInit() != GLEW_OK) {
-          fprintf(stderr, "Failed to initialize GLEW\n");
-          exit(-1);
-  }
-  std::cout << "Initialized GL Components.\n";
+	// Initialize GLEW
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize GLEW\n");
+		exit(-1);
+	}
 }
 
 void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side, std::pair<int,int>& edge, int& height)
@@ -151,15 +149,15 @@ void genIndices(std::vector< GLuint >& indices, const unsigned int& side, const 
   assert(interval!=0);
   bool last_chance_x=false,last_chance_y=true;
   int i=0;
-  for(int y=interval,x=0,lasty=0, lastx; y<side || last_chance_y; y+=interval)
+  for(int y=side-interval,x=0,lasty=side-1, lastx; y>=0 || last_chance_y; y-=interval)
   {
     last_chance_x=true;
-    if(y>=side)
+    if(y<0)
     {
-      if(lasty==side-1)
+      if(lasty==0)
         break;
       last_chance_y=false;
-      y=side-1;
+      y=0;
     }
     for(x=interval, lastx=0; x<side || last_chance_x; x+=interval)
     {
@@ -172,15 +170,15 @@ void genIndices(std::vector< GLuint >& indices, const unsigned int& side, const 
       }
       indices[i] = (lasty)*side+(lastx);
       i++;
-      indices[i] = y*side+(lastx);
+      indices[i] = (y)*side+(lastx);
       i++;
       indices[i] = (lasty)*side+x;
       i++;
       indices[i] = (lasty)*side+x;
       i++;
-      indices[i] = y*side+(lastx);
+      indices[i] = (y)*side+(lastx);
       i++;
-      indices[i] = y*side+x;
+      indices[i] = (y)*side+x;
       i++;
       lastx=x;
 /*      for(int j=6;j>0;j--)

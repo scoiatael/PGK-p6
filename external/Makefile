@@ -38,19 +38,22 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/luki/Documents/PGK/p6/PGK-p6
+CMAKE_SOURCE_DIR = /home/luki/Downloads/PGK/PGK-p6
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/luki/Documents/PGK/p6/PGK-p6
+CMAKE_BINARY_DIR = /home/luki/Downloads/PGK/PGK-p6
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
-	/usr/bin/cmake -i .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(CMAKE_COMMAND) -E cmake_progress_start /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles /home/luki/Documents/PGK/p6/PGK-p6/external/CMakeFiles/progress.marks
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles 0
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(CMAKE_COMMAND) -E cmake_progress_start /home/luki/Downloads/PGK/PGK-p6/CMakeFiles /home/luki/Downloads/PGK/PGK-p6/external/CMakeFiles/progress.marks
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/luki/Downloads/PGK/PGK-p6/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/clean
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/preinstall
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/preinstall
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/rule:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/rule
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/rule
 .PHONY : external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/rule
 
 # Convenience name for target.
@@ -109,26 +112,26 @@ ANTTWEAKBAR_151_OGLCORE_GLFW: external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.d
 
 # fast build rule for target.
 ANTTWEAKBAR_151_OGLCORE_GLFW/fast:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build
 .PHONY : ANTTWEAKBAR_151_OGLCORE_GLFW/fast
 
 # Convenience name for target.
-external/CMakeFiles/GLEW_158.dir/rule:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/GLEW_158.dir/rule
-.PHONY : external/CMakeFiles/GLEW_158.dir/rule
+external/CMakeFiles/GLEW_190.dir/rule:
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/GLEW_190.dir/rule
+.PHONY : external/CMakeFiles/GLEW_190.dir/rule
 
 # Convenience name for target.
-GLEW_158: external/CMakeFiles/GLEW_158.dir/rule
-.PHONY : GLEW_158
+GLEW_190: external/CMakeFiles/GLEW_190.dir/rule
+.PHONY : GLEW_190
 
 # fast build rule for target.
-GLEW_158/fast:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_158.dir/build.make external/CMakeFiles/GLEW_158.dir/build
-.PHONY : GLEW_158/fast
+GLEW_190/fast:
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_190.dir/build.make external/CMakeFiles/GLEW_190.dir/build
+.PHONY : GLEW_190/fast
 
 # Convenience name for target.
 external/CMakeFiles/GLFW_276.dir/rule:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/GLFW_276.dir/rule
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/GLFW_276.dir/rule
 .PHONY : external/CMakeFiles/GLFW_276.dir/rule
 
 # Convenience name for target.
@@ -137,7 +140,7 @@ GLFW_276: external/CMakeFiles/GLFW_276.dir/rule
 
 # fast build rule for target.
 GLFW_276/fast:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/build
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/build
 .PHONY : GLFW_276/fast
 
 AntTweakBar-1.15/src/LoadOGL.o: AntTweakBar-1.15/src/LoadOGL.cpp.o
@@ -145,7 +148,7 @@ AntTweakBar-1.15/src/LoadOGL.o: AntTweakBar-1.15/src/LoadOGL.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/LoadOGL.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGL.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGL.cpp.o
 .PHONY : AntTweakBar-1.15/src/LoadOGL.cpp.o
 
 AntTweakBar-1.15/src/LoadOGL.i: AntTweakBar-1.15/src/LoadOGL.cpp.i
@@ -153,7 +156,7 @@ AntTweakBar-1.15/src/LoadOGL.i: AntTweakBar-1.15/src/LoadOGL.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/LoadOGL.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGL.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGL.cpp.i
 .PHONY : AntTweakBar-1.15/src/LoadOGL.cpp.i
 
 AntTweakBar-1.15/src/LoadOGL.s: AntTweakBar-1.15/src/LoadOGL.cpp.s
@@ -161,7 +164,7 @@ AntTweakBar-1.15/src/LoadOGL.s: AntTweakBar-1.15/src/LoadOGL.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/LoadOGL.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGL.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGL.cpp.s
 .PHONY : AntTweakBar-1.15/src/LoadOGL.cpp.s
 
 AntTweakBar-1.15/src/LoadOGLCore.o: AntTweakBar-1.15/src/LoadOGLCore.cpp.o
@@ -169,7 +172,7 @@ AntTweakBar-1.15/src/LoadOGLCore.o: AntTweakBar-1.15/src/LoadOGLCore.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/LoadOGLCore.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGLCore.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGLCore.cpp.o
 .PHONY : AntTweakBar-1.15/src/LoadOGLCore.cpp.o
 
 AntTweakBar-1.15/src/LoadOGLCore.i: AntTweakBar-1.15/src/LoadOGLCore.cpp.i
@@ -177,7 +180,7 @@ AntTweakBar-1.15/src/LoadOGLCore.i: AntTweakBar-1.15/src/LoadOGLCore.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/LoadOGLCore.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGLCore.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGLCore.cpp.i
 .PHONY : AntTweakBar-1.15/src/LoadOGLCore.cpp.i
 
 AntTweakBar-1.15/src/LoadOGLCore.s: AntTweakBar-1.15/src/LoadOGLCore.cpp.s
@@ -185,7 +188,7 @@ AntTweakBar-1.15/src/LoadOGLCore.s: AntTweakBar-1.15/src/LoadOGLCore.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/LoadOGLCore.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGLCore.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/LoadOGLCore.cpp.s
 .PHONY : AntTweakBar-1.15/src/LoadOGLCore.cpp.s
 
 AntTweakBar-1.15/src/TwBar.o: AntTweakBar-1.15/src/TwBar.cpp.o
@@ -193,7 +196,7 @@ AntTweakBar-1.15/src/TwBar.o: AntTweakBar-1.15/src/TwBar.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwBar.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwBar.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwBar.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwBar.cpp.o
 
 AntTweakBar-1.15/src/TwBar.i: AntTweakBar-1.15/src/TwBar.cpp.i
@@ -201,7 +204,7 @@ AntTweakBar-1.15/src/TwBar.i: AntTweakBar-1.15/src/TwBar.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwBar.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwBar.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwBar.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwBar.cpp.i
 
 AntTweakBar-1.15/src/TwBar.s: AntTweakBar-1.15/src/TwBar.cpp.s
@@ -209,7 +212,7 @@ AntTweakBar-1.15/src/TwBar.s: AntTweakBar-1.15/src/TwBar.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwBar.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwBar.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwBar.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwBar.cpp.s
 
 AntTweakBar-1.15/src/TwColors.o: AntTweakBar-1.15/src/TwColors.cpp.o
@@ -217,7 +220,7 @@ AntTweakBar-1.15/src/TwColors.o: AntTweakBar-1.15/src/TwColors.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwColors.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwColors.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwColors.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwColors.cpp.o
 
 AntTweakBar-1.15/src/TwColors.i: AntTweakBar-1.15/src/TwColors.cpp.i
@@ -225,7 +228,7 @@ AntTweakBar-1.15/src/TwColors.i: AntTweakBar-1.15/src/TwColors.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwColors.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwColors.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwColors.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwColors.cpp.i
 
 AntTweakBar-1.15/src/TwColors.s: AntTweakBar-1.15/src/TwColors.cpp.s
@@ -233,7 +236,7 @@ AntTweakBar-1.15/src/TwColors.s: AntTweakBar-1.15/src/TwColors.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwColors.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwColors.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwColors.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwColors.cpp.s
 
 AntTweakBar-1.15/src/TwEventGLFW.o: AntTweakBar-1.15/src/TwEventGLFW.c.o
@@ -241,7 +244,7 @@ AntTweakBar-1.15/src/TwEventGLFW.o: AntTweakBar-1.15/src/TwEventGLFW.c.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwEventGLFW.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwEventGLFW.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwEventGLFW.c.o
 .PHONY : AntTweakBar-1.15/src/TwEventGLFW.c.o
 
 AntTweakBar-1.15/src/TwEventGLFW.i: AntTweakBar-1.15/src/TwEventGLFW.c.i
@@ -249,7 +252,7 @@ AntTweakBar-1.15/src/TwEventGLFW.i: AntTweakBar-1.15/src/TwEventGLFW.c.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwEventGLFW.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwEventGLFW.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwEventGLFW.c.i
 .PHONY : AntTweakBar-1.15/src/TwEventGLFW.c.i
 
 AntTweakBar-1.15/src/TwEventGLFW.s: AntTweakBar-1.15/src/TwEventGLFW.c.s
@@ -257,7 +260,7 @@ AntTweakBar-1.15/src/TwEventGLFW.s: AntTweakBar-1.15/src/TwEventGLFW.c.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwEventGLFW.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwEventGLFW.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwEventGLFW.c.s
 .PHONY : AntTweakBar-1.15/src/TwEventGLFW.c.s
 
 AntTweakBar-1.15/src/TwFonts.o: AntTweakBar-1.15/src/TwFonts.cpp.o
@@ -265,7 +268,7 @@ AntTweakBar-1.15/src/TwFonts.o: AntTweakBar-1.15/src/TwFonts.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwFonts.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwFonts.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwFonts.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwFonts.cpp.o
 
 AntTweakBar-1.15/src/TwFonts.i: AntTweakBar-1.15/src/TwFonts.cpp.i
@@ -273,7 +276,7 @@ AntTweakBar-1.15/src/TwFonts.i: AntTweakBar-1.15/src/TwFonts.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwFonts.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwFonts.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwFonts.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwFonts.cpp.i
 
 AntTweakBar-1.15/src/TwFonts.s: AntTweakBar-1.15/src/TwFonts.cpp.s
@@ -281,7 +284,7 @@ AntTweakBar-1.15/src/TwFonts.s: AntTweakBar-1.15/src/TwFonts.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwFonts.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwFonts.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwFonts.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwFonts.cpp.s
 
 AntTweakBar-1.15/src/TwMgr.o: AntTweakBar-1.15/src/TwMgr.cpp.o
@@ -289,7 +292,7 @@ AntTweakBar-1.15/src/TwMgr.o: AntTweakBar-1.15/src/TwMgr.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwMgr.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwMgr.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwMgr.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwMgr.cpp.o
 
 AntTweakBar-1.15/src/TwMgr.i: AntTweakBar-1.15/src/TwMgr.cpp.i
@@ -297,7 +300,7 @@ AntTweakBar-1.15/src/TwMgr.i: AntTweakBar-1.15/src/TwMgr.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwMgr.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwMgr.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwMgr.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwMgr.cpp.i
 
 AntTweakBar-1.15/src/TwMgr.s: AntTweakBar-1.15/src/TwMgr.cpp.s
@@ -305,7 +308,7 @@ AntTweakBar-1.15/src/TwMgr.s: AntTweakBar-1.15/src/TwMgr.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwMgr.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwMgr.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwMgr.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwMgr.cpp.s
 
 AntTweakBar-1.15/src/TwOpenGL.o: AntTweakBar-1.15/src/TwOpenGL.cpp.o
@@ -313,7 +316,7 @@ AntTweakBar-1.15/src/TwOpenGL.o: AntTweakBar-1.15/src/TwOpenGL.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwOpenGL.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGL.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGL.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwOpenGL.cpp.o
 
 AntTweakBar-1.15/src/TwOpenGL.i: AntTweakBar-1.15/src/TwOpenGL.cpp.i
@@ -321,7 +324,7 @@ AntTweakBar-1.15/src/TwOpenGL.i: AntTweakBar-1.15/src/TwOpenGL.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwOpenGL.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGL.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGL.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwOpenGL.cpp.i
 
 AntTweakBar-1.15/src/TwOpenGL.s: AntTweakBar-1.15/src/TwOpenGL.cpp.s
@@ -329,7 +332,7 @@ AntTweakBar-1.15/src/TwOpenGL.s: AntTweakBar-1.15/src/TwOpenGL.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwOpenGL.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGL.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGL.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwOpenGL.cpp.s
 
 AntTweakBar-1.15/src/TwOpenGLCore.o: AntTweakBar-1.15/src/TwOpenGLCore.cpp.o
@@ -337,7 +340,7 @@ AntTweakBar-1.15/src/TwOpenGLCore.o: AntTweakBar-1.15/src/TwOpenGLCore.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwOpenGLCore.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGLCore.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGLCore.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwOpenGLCore.cpp.o
 
 AntTweakBar-1.15/src/TwOpenGLCore.i: AntTweakBar-1.15/src/TwOpenGLCore.cpp.i
@@ -345,7 +348,7 @@ AntTweakBar-1.15/src/TwOpenGLCore.i: AntTweakBar-1.15/src/TwOpenGLCore.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwOpenGLCore.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGLCore.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGLCore.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwOpenGLCore.cpp.i
 
 AntTweakBar-1.15/src/TwOpenGLCore.s: AntTweakBar-1.15/src/TwOpenGLCore.cpp.s
@@ -353,7 +356,7 @@ AntTweakBar-1.15/src/TwOpenGLCore.s: AntTweakBar-1.15/src/TwOpenGLCore.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwOpenGLCore.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGLCore.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwOpenGLCore.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwOpenGLCore.cpp.s
 
 AntTweakBar-1.15/src/TwPrecomp.o: AntTweakBar-1.15/src/TwPrecomp.cpp.o
@@ -361,7 +364,7 @@ AntTweakBar-1.15/src/TwPrecomp.o: AntTweakBar-1.15/src/TwPrecomp.cpp.o
 
 # target to build an object file
 AntTweakBar-1.15/src/TwPrecomp.cpp.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwPrecomp.cpp.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwPrecomp.cpp.o
 .PHONY : AntTweakBar-1.15/src/TwPrecomp.cpp.o
 
 AntTweakBar-1.15/src/TwPrecomp.i: AntTweakBar-1.15/src/TwPrecomp.cpp.i
@@ -369,7 +372,7 @@ AntTweakBar-1.15/src/TwPrecomp.i: AntTweakBar-1.15/src/TwPrecomp.cpp.i
 
 # target to preprocess a source file
 AntTweakBar-1.15/src/TwPrecomp.cpp.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwPrecomp.cpp.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwPrecomp.cpp.i
 .PHONY : AntTweakBar-1.15/src/TwPrecomp.cpp.i
 
 AntTweakBar-1.15/src/TwPrecomp.s: AntTweakBar-1.15/src/TwPrecomp.cpp.s
@@ -377,39 +380,39 @@ AntTweakBar-1.15/src/TwPrecomp.s: AntTweakBar-1.15/src/TwPrecomp.cpp.s
 
 # target to generate assembly for a file
 AntTweakBar-1.15/src/TwPrecomp.cpp.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwPrecomp.cpp.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/build.make external/CMakeFiles/ANTTWEAKBAR_151_OGLCORE_GLFW.dir/AntTweakBar-1.15/src/TwPrecomp.cpp.s
 .PHONY : AntTweakBar-1.15/src/TwPrecomp.cpp.s
 
-glew-1.5.8/src/glew.o: glew-1.5.8/src/glew.c.o
-.PHONY : glew-1.5.8/src/glew.o
+glew-1.9.0/src/glew.o: glew-1.9.0/src/glew.c.o
+.PHONY : glew-1.9.0/src/glew.o
 
 # target to build an object file
-glew-1.5.8/src/glew.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_158.dir/build.make external/CMakeFiles/GLEW_158.dir/glew-1.5.8/src/glew.c.o
-.PHONY : glew-1.5.8/src/glew.c.o
+glew-1.9.0/src/glew.c.o:
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_190.dir/build.make external/CMakeFiles/GLEW_190.dir/glew-1.9.0/src/glew.c.o
+.PHONY : glew-1.9.0/src/glew.c.o
 
-glew-1.5.8/src/glew.i: glew-1.5.8/src/glew.c.i
-.PHONY : glew-1.5.8/src/glew.i
+glew-1.9.0/src/glew.i: glew-1.9.0/src/glew.c.i
+.PHONY : glew-1.9.0/src/glew.i
 
 # target to preprocess a source file
-glew-1.5.8/src/glew.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_158.dir/build.make external/CMakeFiles/GLEW_158.dir/glew-1.5.8/src/glew.c.i
-.PHONY : glew-1.5.8/src/glew.c.i
+glew-1.9.0/src/glew.c.i:
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_190.dir/build.make external/CMakeFiles/GLEW_190.dir/glew-1.9.0/src/glew.c.i
+.PHONY : glew-1.9.0/src/glew.c.i
 
-glew-1.5.8/src/glew.s: glew-1.5.8/src/glew.c.s
-.PHONY : glew-1.5.8/src/glew.s
+glew-1.9.0/src/glew.s: glew-1.9.0/src/glew.c.s
+.PHONY : glew-1.9.0/src/glew.s
 
 # target to generate assembly for a file
-glew-1.5.8/src/glew.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_158.dir/build.make external/CMakeFiles/GLEW_158.dir/glew-1.5.8/src/glew.c.s
-.PHONY : glew-1.5.8/src/glew.c.s
+glew-1.9.0/src/glew.c.s:
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLEW_190.dir/build.make external/CMakeFiles/GLEW_190.dir/glew-1.9.0/src/glew.c.s
+.PHONY : glew-1.9.0/src/glew.c.s
 
 glfw-2.7.6/lib/enable.o: glfw-2.7.6/lib/enable.c.o
 .PHONY : glfw-2.7.6/lib/enable.o
 
 # target to build an object file
 glfw-2.7.6/lib/enable.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o
 .PHONY : glfw-2.7.6/lib/enable.c.o
 
 glfw-2.7.6/lib/enable.i: glfw-2.7.6/lib/enable.c.i
@@ -417,7 +420,7 @@ glfw-2.7.6/lib/enable.i: glfw-2.7.6/lib/enable.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/enable.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.i
 .PHONY : glfw-2.7.6/lib/enable.c.i
 
 glfw-2.7.6/lib/enable.s: glfw-2.7.6/lib/enable.c.s
@@ -425,7 +428,7 @@ glfw-2.7.6/lib/enable.s: glfw-2.7.6/lib/enable.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/enable.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.s
 .PHONY : glfw-2.7.6/lib/enable.c.s
 
 glfw-2.7.6/lib/fullscreen.o: glfw-2.7.6/lib/fullscreen.c.o
@@ -433,7 +436,7 @@ glfw-2.7.6/lib/fullscreen.o: glfw-2.7.6/lib/fullscreen.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/fullscreen.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o
 .PHONY : glfw-2.7.6/lib/fullscreen.c.o
 
 glfw-2.7.6/lib/fullscreen.i: glfw-2.7.6/lib/fullscreen.c.i
@@ -441,7 +444,7 @@ glfw-2.7.6/lib/fullscreen.i: glfw-2.7.6/lib/fullscreen.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/fullscreen.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.i
 .PHONY : glfw-2.7.6/lib/fullscreen.c.i
 
 glfw-2.7.6/lib/fullscreen.s: glfw-2.7.6/lib/fullscreen.c.s
@@ -449,7 +452,7 @@ glfw-2.7.6/lib/fullscreen.s: glfw-2.7.6/lib/fullscreen.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/fullscreen.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.s
 .PHONY : glfw-2.7.6/lib/fullscreen.c.s
 
 glfw-2.7.6/lib/glext.o: glfw-2.7.6/lib/glext.c.o
@@ -457,7 +460,7 @@ glfw-2.7.6/lib/glext.o: glfw-2.7.6/lib/glext.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/glext.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o
 .PHONY : glfw-2.7.6/lib/glext.c.o
 
 glfw-2.7.6/lib/glext.i: glfw-2.7.6/lib/glext.c.i
@@ -465,7 +468,7 @@ glfw-2.7.6/lib/glext.i: glfw-2.7.6/lib/glext.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/glext.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.i
 .PHONY : glfw-2.7.6/lib/glext.c.i
 
 glfw-2.7.6/lib/glext.s: glfw-2.7.6/lib/glext.c.s
@@ -473,7 +476,7 @@ glfw-2.7.6/lib/glext.s: glfw-2.7.6/lib/glext.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/glext.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.s
 .PHONY : glfw-2.7.6/lib/glext.c.s
 
 glfw-2.7.6/lib/image.o: glfw-2.7.6/lib/image.c.o
@@ -481,7 +484,7 @@ glfw-2.7.6/lib/image.o: glfw-2.7.6/lib/image.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/image.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o
 .PHONY : glfw-2.7.6/lib/image.c.o
 
 glfw-2.7.6/lib/image.i: glfw-2.7.6/lib/image.c.i
@@ -489,7 +492,7 @@ glfw-2.7.6/lib/image.i: glfw-2.7.6/lib/image.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/image.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.i
 .PHONY : glfw-2.7.6/lib/image.c.i
 
 glfw-2.7.6/lib/image.s: glfw-2.7.6/lib/image.c.s
@@ -497,7 +500,7 @@ glfw-2.7.6/lib/image.s: glfw-2.7.6/lib/image.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/image.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.s
 .PHONY : glfw-2.7.6/lib/image.c.s
 
 glfw-2.7.6/lib/init.o: glfw-2.7.6/lib/init.c.o
@@ -505,7 +508,7 @@ glfw-2.7.6/lib/init.o: glfw-2.7.6/lib/init.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/init.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o
 .PHONY : glfw-2.7.6/lib/init.c.o
 
 glfw-2.7.6/lib/init.i: glfw-2.7.6/lib/init.c.i
@@ -513,7 +516,7 @@ glfw-2.7.6/lib/init.i: glfw-2.7.6/lib/init.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/init.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.i
 .PHONY : glfw-2.7.6/lib/init.c.i
 
 glfw-2.7.6/lib/init.s: glfw-2.7.6/lib/init.c.s
@@ -521,7 +524,7 @@ glfw-2.7.6/lib/init.s: glfw-2.7.6/lib/init.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/init.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.s
 .PHONY : glfw-2.7.6/lib/init.c.s
 
 glfw-2.7.6/lib/input.o: glfw-2.7.6/lib/input.c.o
@@ -529,7 +532,7 @@ glfw-2.7.6/lib/input.o: glfw-2.7.6/lib/input.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/input.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o
 .PHONY : glfw-2.7.6/lib/input.c.o
 
 glfw-2.7.6/lib/input.i: glfw-2.7.6/lib/input.c.i
@@ -537,7 +540,7 @@ glfw-2.7.6/lib/input.i: glfw-2.7.6/lib/input.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/input.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.i
 .PHONY : glfw-2.7.6/lib/input.c.i
 
 glfw-2.7.6/lib/input.s: glfw-2.7.6/lib/input.c.s
@@ -545,7 +548,7 @@ glfw-2.7.6/lib/input.s: glfw-2.7.6/lib/input.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/input.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.s
 .PHONY : glfw-2.7.6/lib/input.c.s
 
 glfw-2.7.6/lib/joystick.o: glfw-2.7.6/lib/joystick.c.o
@@ -553,7 +556,7 @@ glfw-2.7.6/lib/joystick.o: glfw-2.7.6/lib/joystick.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/joystick.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o
 .PHONY : glfw-2.7.6/lib/joystick.c.o
 
 glfw-2.7.6/lib/joystick.i: glfw-2.7.6/lib/joystick.c.i
@@ -561,7 +564,7 @@ glfw-2.7.6/lib/joystick.i: glfw-2.7.6/lib/joystick.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/joystick.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.i
 .PHONY : glfw-2.7.6/lib/joystick.c.i
 
 glfw-2.7.6/lib/joystick.s: glfw-2.7.6/lib/joystick.c.s
@@ -569,7 +572,7 @@ glfw-2.7.6/lib/joystick.s: glfw-2.7.6/lib/joystick.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/joystick.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.s
 .PHONY : glfw-2.7.6/lib/joystick.c.s
 
 glfw-2.7.6/lib/stream.o: glfw-2.7.6/lib/stream.c.o
@@ -577,7 +580,7 @@ glfw-2.7.6/lib/stream.o: glfw-2.7.6/lib/stream.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/stream.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o
 .PHONY : glfw-2.7.6/lib/stream.c.o
 
 glfw-2.7.6/lib/stream.i: glfw-2.7.6/lib/stream.c.i
@@ -585,7 +588,7 @@ glfw-2.7.6/lib/stream.i: glfw-2.7.6/lib/stream.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/stream.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.i
 .PHONY : glfw-2.7.6/lib/stream.c.i
 
 glfw-2.7.6/lib/stream.s: glfw-2.7.6/lib/stream.c.s
@@ -593,7 +596,7 @@ glfw-2.7.6/lib/stream.s: glfw-2.7.6/lib/stream.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/stream.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.s
 .PHONY : glfw-2.7.6/lib/stream.c.s
 
 glfw-2.7.6/lib/tga.o: glfw-2.7.6/lib/tga.c.o
@@ -601,7 +604,7 @@ glfw-2.7.6/lib/tga.o: glfw-2.7.6/lib/tga.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/tga.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o
 .PHONY : glfw-2.7.6/lib/tga.c.o
 
 glfw-2.7.6/lib/tga.i: glfw-2.7.6/lib/tga.c.i
@@ -609,7 +612,7 @@ glfw-2.7.6/lib/tga.i: glfw-2.7.6/lib/tga.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/tga.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.i
 .PHONY : glfw-2.7.6/lib/tga.c.i
 
 glfw-2.7.6/lib/tga.s: glfw-2.7.6/lib/tga.c.s
@@ -617,7 +620,7 @@ glfw-2.7.6/lib/tga.s: glfw-2.7.6/lib/tga.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/tga.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.s
 .PHONY : glfw-2.7.6/lib/tga.c.s
 
 glfw-2.7.6/lib/thread.o: glfw-2.7.6/lib/thread.c.o
@@ -625,7 +628,7 @@ glfw-2.7.6/lib/thread.o: glfw-2.7.6/lib/thread.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/thread.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o
 .PHONY : glfw-2.7.6/lib/thread.c.o
 
 glfw-2.7.6/lib/thread.i: glfw-2.7.6/lib/thread.c.i
@@ -633,7 +636,7 @@ glfw-2.7.6/lib/thread.i: glfw-2.7.6/lib/thread.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/thread.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.i
 .PHONY : glfw-2.7.6/lib/thread.c.i
 
 glfw-2.7.6/lib/thread.s: glfw-2.7.6/lib/thread.c.s
@@ -641,7 +644,7 @@ glfw-2.7.6/lib/thread.s: glfw-2.7.6/lib/thread.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/thread.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.s
 .PHONY : glfw-2.7.6/lib/thread.c.s
 
 glfw-2.7.6/lib/time.o: glfw-2.7.6/lib/time.c.o
@@ -649,7 +652,7 @@ glfw-2.7.6/lib/time.o: glfw-2.7.6/lib/time.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/time.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o
 .PHONY : glfw-2.7.6/lib/time.c.o
 
 glfw-2.7.6/lib/time.i: glfw-2.7.6/lib/time.c.i
@@ -657,7 +660,7 @@ glfw-2.7.6/lib/time.i: glfw-2.7.6/lib/time.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/time.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.i
 .PHONY : glfw-2.7.6/lib/time.c.i
 
 glfw-2.7.6/lib/time.s: glfw-2.7.6/lib/time.c.s
@@ -665,7 +668,7 @@ glfw-2.7.6/lib/time.s: glfw-2.7.6/lib/time.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/time.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.s
 .PHONY : glfw-2.7.6/lib/time.c.s
 
 glfw-2.7.6/lib/window.o: glfw-2.7.6/lib/window.c.o
@@ -673,7 +676,7 @@ glfw-2.7.6/lib/window.o: glfw-2.7.6/lib/window.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/window.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o
 .PHONY : glfw-2.7.6/lib/window.c.o
 
 glfw-2.7.6/lib/window.i: glfw-2.7.6/lib/window.c.i
@@ -681,7 +684,7 @@ glfw-2.7.6/lib/window.i: glfw-2.7.6/lib/window.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/window.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.i
 .PHONY : glfw-2.7.6/lib/window.c.i
 
 glfw-2.7.6/lib/window.s: glfw-2.7.6/lib/window.c.s
@@ -689,7 +692,7 @@ glfw-2.7.6/lib/window.s: glfw-2.7.6/lib/window.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/window.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.s
 .PHONY : glfw-2.7.6/lib/window.c.s
 
 glfw-2.7.6/lib/x11/x11_enable.o: glfw-2.7.6/lib/x11/x11_enable.c.o
@@ -697,7 +700,7 @@ glfw-2.7.6/lib/x11/x11_enable.o: glfw-2.7.6/lib/x11/x11_enable.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_enable.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_enable.c.o
 
 glfw-2.7.6/lib/x11/x11_enable.i: glfw-2.7.6/lib/x11/x11_enable.c.i
@@ -705,7 +708,7 @@ glfw-2.7.6/lib/x11/x11_enable.i: glfw-2.7.6/lib/x11/x11_enable.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_enable.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_enable.c.i
 
 glfw-2.7.6/lib/x11/x11_enable.s: glfw-2.7.6/lib/x11/x11_enable.c.s
@@ -713,7 +716,7 @@ glfw-2.7.6/lib/x11/x11_enable.s: glfw-2.7.6/lib/x11/x11_enable.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_enable.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_enable.c.s
 
 glfw-2.7.6/lib/x11/x11_fullscreen.o: glfw-2.7.6/lib/x11/x11_fullscreen.c.o
@@ -721,7 +724,7 @@ glfw-2.7.6/lib/x11/x11_fullscreen.o: glfw-2.7.6/lib/x11/x11_fullscreen.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_fullscreen.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_fullscreen.c.o
 
 glfw-2.7.6/lib/x11/x11_fullscreen.i: glfw-2.7.6/lib/x11/x11_fullscreen.c.i
@@ -729,7 +732,7 @@ glfw-2.7.6/lib/x11/x11_fullscreen.i: glfw-2.7.6/lib/x11/x11_fullscreen.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_fullscreen.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_fullscreen.c.i
 
 glfw-2.7.6/lib/x11/x11_fullscreen.s: glfw-2.7.6/lib/x11/x11_fullscreen.c.s
@@ -737,7 +740,7 @@ glfw-2.7.6/lib/x11/x11_fullscreen.s: glfw-2.7.6/lib/x11/x11_fullscreen.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_fullscreen.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_fullscreen.c.s
 
 glfw-2.7.6/lib/x11/x11_glext.o: glfw-2.7.6/lib/x11/x11_glext.c.o
@@ -745,7 +748,7 @@ glfw-2.7.6/lib/x11/x11_glext.o: glfw-2.7.6/lib/x11/x11_glext.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_glext.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_glext.c.o
 
 glfw-2.7.6/lib/x11/x11_glext.i: glfw-2.7.6/lib/x11/x11_glext.c.i
@@ -753,7 +756,7 @@ glfw-2.7.6/lib/x11/x11_glext.i: glfw-2.7.6/lib/x11/x11_glext.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_glext.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_glext.c.i
 
 glfw-2.7.6/lib/x11/x11_glext.s: glfw-2.7.6/lib/x11/x11_glext.c.s
@@ -761,7 +764,7 @@ glfw-2.7.6/lib/x11/x11_glext.s: glfw-2.7.6/lib/x11/x11_glext.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_glext.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_glext.c.s
 
 glfw-2.7.6/lib/x11/x11_init.o: glfw-2.7.6/lib/x11/x11_init.c.o
@@ -769,7 +772,7 @@ glfw-2.7.6/lib/x11/x11_init.o: glfw-2.7.6/lib/x11/x11_init.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_init.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_init.c.o
 
 glfw-2.7.6/lib/x11/x11_init.i: glfw-2.7.6/lib/x11/x11_init.c.i
@@ -777,7 +780,7 @@ glfw-2.7.6/lib/x11/x11_init.i: glfw-2.7.6/lib/x11/x11_init.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_init.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_init.c.i
 
 glfw-2.7.6/lib/x11/x11_init.s: glfw-2.7.6/lib/x11/x11_init.c.s
@@ -785,7 +788,7 @@ glfw-2.7.6/lib/x11/x11_init.s: glfw-2.7.6/lib/x11/x11_init.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_init.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_init.c.s
 
 glfw-2.7.6/lib/x11/x11_joystick.o: glfw-2.7.6/lib/x11/x11_joystick.c.o
@@ -793,7 +796,7 @@ glfw-2.7.6/lib/x11/x11_joystick.o: glfw-2.7.6/lib/x11/x11_joystick.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_joystick.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_joystick.c.o
 
 glfw-2.7.6/lib/x11/x11_joystick.i: glfw-2.7.6/lib/x11/x11_joystick.c.i
@@ -801,7 +804,7 @@ glfw-2.7.6/lib/x11/x11_joystick.i: glfw-2.7.6/lib/x11/x11_joystick.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_joystick.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_joystick.c.i
 
 glfw-2.7.6/lib/x11/x11_joystick.s: glfw-2.7.6/lib/x11/x11_joystick.c.s
@@ -809,7 +812,7 @@ glfw-2.7.6/lib/x11/x11_joystick.s: glfw-2.7.6/lib/x11/x11_joystick.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_joystick.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_joystick.c.s
 
 glfw-2.7.6/lib/x11/x11_keysym2unicode.o: glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o
@@ -817,7 +820,7 @@ glfw-2.7.6/lib/x11/x11_keysym2unicode.o: glfw-2.7.6/lib/x11/x11_keysym2unicode.c
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o
 
 glfw-2.7.6/lib/x11/x11_keysym2unicode.i: glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i
@@ -825,7 +828,7 @@ glfw-2.7.6/lib/x11/x11_keysym2unicode.i: glfw-2.7.6/lib/x11/x11_keysym2unicode.c
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i
 
 glfw-2.7.6/lib/x11/x11_keysym2unicode.s: glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s
@@ -833,7 +836,7 @@ glfw-2.7.6/lib/x11/x11_keysym2unicode.s: glfw-2.7.6/lib/x11/x11_keysym2unicode.c
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s
 
 glfw-2.7.6/lib/x11/x11_thread.o: glfw-2.7.6/lib/x11/x11_thread.c.o
@@ -841,7 +844,7 @@ glfw-2.7.6/lib/x11/x11_thread.o: glfw-2.7.6/lib/x11/x11_thread.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_thread.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_thread.c.o
 
 glfw-2.7.6/lib/x11/x11_thread.i: glfw-2.7.6/lib/x11/x11_thread.c.i
@@ -849,7 +852,7 @@ glfw-2.7.6/lib/x11/x11_thread.i: glfw-2.7.6/lib/x11/x11_thread.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_thread.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_thread.c.i
 
 glfw-2.7.6/lib/x11/x11_thread.s: glfw-2.7.6/lib/x11/x11_thread.c.s
@@ -857,7 +860,7 @@ glfw-2.7.6/lib/x11/x11_thread.s: glfw-2.7.6/lib/x11/x11_thread.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_thread.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_thread.c.s
 
 glfw-2.7.6/lib/x11/x11_time.o: glfw-2.7.6/lib/x11/x11_time.c.o
@@ -865,7 +868,7 @@ glfw-2.7.6/lib/x11/x11_time.o: glfw-2.7.6/lib/x11/x11_time.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_time.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_time.c.o
 
 glfw-2.7.6/lib/x11/x11_time.i: glfw-2.7.6/lib/x11/x11_time.c.i
@@ -873,7 +876,7 @@ glfw-2.7.6/lib/x11/x11_time.i: glfw-2.7.6/lib/x11/x11_time.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_time.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_time.c.i
 
 glfw-2.7.6/lib/x11/x11_time.s: glfw-2.7.6/lib/x11/x11_time.c.s
@@ -881,7 +884,7 @@ glfw-2.7.6/lib/x11/x11_time.s: glfw-2.7.6/lib/x11/x11_time.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_time.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_time.c.s
 
 glfw-2.7.6/lib/x11/x11_window.o: glfw-2.7.6/lib/x11/x11_window.c.o
@@ -889,7 +892,7 @@ glfw-2.7.6/lib/x11/x11_window.o: glfw-2.7.6/lib/x11/x11_window.c.o
 
 # target to build an object file
 glfw-2.7.6/lib/x11/x11_window.c.o:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o
 .PHONY : glfw-2.7.6/lib/x11/x11_window.c.o
 
 glfw-2.7.6/lib/x11/x11_window.i: glfw-2.7.6/lib/x11/x11_window.c.i
@@ -897,7 +900,7 @@ glfw-2.7.6/lib/x11/x11_window.i: glfw-2.7.6/lib/x11/x11_window.c.i
 
 # target to preprocess a source file
 glfw-2.7.6/lib/x11/x11_window.c.i:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.i
 .PHONY : glfw-2.7.6/lib/x11/x11_window.c.i
 
 glfw-2.7.6/lib/x11/x11_window.s: glfw-2.7.6/lib/x11/x11_window.c.s
@@ -905,7 +908,7 @@ glfw-2.7.6/lib/x11/x11_window.s: glfw-2.7.6/lib/x11/x11_window.c.s
 
 # target to generate assembly for a file
 glfw-2.7.6/lib/x11/x11_window.c.s:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(MAKE) -f external/CMakeFiles/GLFW_276.dir/build.make external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.s
 .PHONY : glfw-2.7.6/lib/x11/x11_window.c.s
 
 # Help Target
@@ -915,7 +918,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... ANTTWEAKBAR_151_OGLCORE_GLFW"
-	@echo "... GLEW_158"
+	@echo "... GLEW_190"
 	@echo "... GLFW_276"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
@@ -949,9 +952,9 @@ help:
 	@echo "... AntTweakBar-1.15/src/TwPrecomp.o"
 	@echo "... AntTweakBar-1.15/src/TwPrecomp.i"
 	@echo "... AntTweakBar-1.15/src/TwPrecomp.s"
-	@echo "... glew-1.5.8/src/glew.o"
-	@echo "... glew-1.5.8/src/glew.i"
-	@echo "... glew-1.5.8/src/glew.s"
+	@echo "... glew-1.9.0/src/glew.o"
+	@echo "... glew-1.9.0/src/glew.i"
+	@echo "... glew-1.9.0/src/glew.s"
 	@echo "... glfw-2.7.6/lib/enable.o"
 	@echo "... glfw-2.7.6/lib/enable.i"
 	@echo "... glfw-2.7.6/lib/enable.s"
@@ -1026,6 +1029,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

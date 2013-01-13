@@ -1,6 +1,6 @@
 # CMake entry point
 cmake_minimum_required (VERSION 2.6)
-project (PGK)
+project (p6)
 
 find_package(OpenGL REQUIRED)
 
@@ -12,23 +12,24 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/rpavlik-cmake-module
 include(CreateLaunchers)
 include(MSVCMultipleProcessCompile) # /MP
 
-
+if(INCLUDE_DISTRIB)
+	add_subdirectory(distrib)
+endif(INCLUDE_DISTRIB)
 
 
 
 include_directories(
 	external/AntTweakBar-1.15/include/
 	external/glfw-2.7.6/include/
-	external/glm-0.9.1/
-	external/glew-1.5.8/include/
+	external/glm-0.9.4.0/
+	external/glew-1.9.0/include/
 	.
 )
 
 set(ALL_LIBS
 	${OPENGL_LIBRARY}
 	GLFW_276
-	GLEW_158
-	ANTTWEAKBAR_151_OGLCORE_GLFW
+	GLEW_190
 )
 
 add_definitions(
@@ -38,12 +39,10 @@ add_definitions(
 	-DGLEW_STATIC
 	-D_CRT_SECURE_NO_WARNINGS
 )
-
-
 # Tutorial 4
 add_executable(p6
+	main.cpp
 	implementacje.cpp
-        main.cpp
 	common/shader.cpp
 	common/shader.hpp
 )
@@ -53,7 +52,3 @@ target_link_libraries(p6
 # Xcode and Visual working directories
 set_target_properties(p6 PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/")
 create_target_launcher(p6 WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/")
-
-
-
-

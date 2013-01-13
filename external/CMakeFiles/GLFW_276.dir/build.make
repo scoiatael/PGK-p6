@@ -34,11 +34,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/luki/Documents/PGK/p6/PGK-p6
+CMAKE_SOURCE_DIR = /home/luki/Downloads/PGK/PGK-p6
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/luki/Documents/PGK/p6/PGK-p6
+CMAKE_BINARY_DIR = /home/luki/Downloads/PGK/PGK-p6
 
 # Include any dependencies generated for this target.
 include external/CMakeFiles/GLFW_276.dir/depend.make
@@ -51,17 +54,17 @@ include external/CMakeFiles/GLFW_276.dir/flags.make
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o: external/glfw-2.7.6/lib/enable.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/enable.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/enable.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/enable.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/enable.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/enable.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/enable.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o.requires
@@ -74,17 +77,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/enable.c.o.provides.build: exter
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o: external/glfw-2.7.6/lib/fullscreen.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/fullscreen.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/fullscreen.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/fullscreen.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/fullscreen.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/fullscreen.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/fullscreen.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o.requires
@@ -97,17 +100,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/fullscreen.c.o.provides.build: e
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o: external/glfw-2.7.6/lib/glext.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/glext.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/glext.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/glext.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/glext.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/glext.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/glext.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o.requires
@@ -120,17 +123,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/glext.c.o.provides.build: extern
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o: external/glfw-2.7.6/lib/image.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/image.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/image.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/image.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/image.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/image.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/image.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o.requires
@@ -143,17 +146,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/image.c.o.provides.build: extern
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o: external/glfw-2.7.6/lib/init.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/init.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/init.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/init.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/init.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/init.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/init.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o.requires
@@ -166,17 +169,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/init.c.o.provides.build: externa
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o: external/glfw-2.7.6/lib/input.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/input.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/input.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/input.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/input.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/input.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/input.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o.requires
@@ -189,17 +192,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/input.c.o.provides.build: extern
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o: external/glfw-2.7.6/lib/joystick.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/joystick.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/joystick.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/joystick.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/joystick.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/joystick.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/joystick.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o.requires
@@ -212,17 +215,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/joystick.c.o.provides.build: ext
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o: external/glfw-2.7.6/lib/stream.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/stream.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/stream.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/stream.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/stream.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/stream.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/stream.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o.requires
@@ -235,17 +238,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/stream.c.o.provides.build: exter
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o: external/glfw-2.7.6/lib/tga.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/tga.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/tga.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/tga.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/tga.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/tga.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/tga.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o.requires
@@ -258,17 +261,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/tga.c.o.provides.build: external
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o: external/glfw-2.7.6/lib/thread.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/thread.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/thread.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/thread.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/thread.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/thread.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/thread.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o.requires
@@ -281,17 +284,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/thread.c.o.provides.build: exter
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o: external/glfw-2.7.6/lib/time.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/time.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/time.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/time.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/time.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/time.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/time.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o.requires
@@ -304,17 +307,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/time.c.o.provides.build: externa
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o: external/glfw-2.7.6/lib/window.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/window.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/window.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/window.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/window.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/window.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/window.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o.requires
@@ -327,17 +330,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/window.c.o.provides.build: exter
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o: external/glfw-2.7.6/lib/x11/x11_enable.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_enable.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_enable.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_enable.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_enable.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_enable.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_enable.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o.requires
@@ -350,17 +353,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_enable.c.o.provides.buil
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o: external/glfw-2.7.6/lib/x11/x11_fullscreen.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_fullscreen.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_fullscreen.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_fullscreen.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_fullscreen.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_fullscreen.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_fullscreen.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o.requires
@@ -373,17 +376,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_fullscreen.c.o.provides.
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o: external/glfw-2.7.6/lib/x11/x11_glext.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_glext.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_glext.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_glext.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_glext.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_glext.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_glext.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o.requires
@@ -396,17 +399,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_glext.c.o.provides.build
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o: external/glfw-2.7.6/lib/x11/x11_init.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_init.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_init.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_init.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_init.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_init.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_init.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o.requires
@@ -419,17 +422,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_init.c.o.provides.build:
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o: external/glfw-2.7.6/lib/x11/x11_joystick.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_joystick.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_joystick.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_joystick.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_joystick.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_joystick.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_joystick.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o.requires
@@ -442,17 +445,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_joystick.c.o.provides.bu
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o: external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_keysym2unicode.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o.requires
@@ -465,17 +468,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_keysym2unicode.c.o.provi
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o: external/glfw-2.7.6/lib/x11/x11_thread.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_thread.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_thread.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_thread.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_thread.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_thread.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_thread.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o.requires
@@ -488,17 +491,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_thread.c.o.provides.buil
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o: external/glfw-2.7.6/lib/x11/x11_time.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_time.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_time.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_time.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_time.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_time.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_time.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o.requires
@@ -511,17 +514,17 @@ external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_time.c.o.provides.build:
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o: external/CMakeFiles/GLFW_276.dir/flags.make
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o: external/glfw-2.7.6/lib/x11/x11_window.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Documents/PGK/p6/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luki/Downloads/PGK/PGK-p6/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o   -c /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_window.c
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o   -c /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_window.c
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.i"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_window.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.i
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_window.c > CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.i
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.s"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Documents/PGK/p6/PGK-p6/external/glfw-2.7.6/lib/x11/x11_window.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.s
+	cd /home/luki/Downloads/PGK/PGK-p6/external && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/luki/Downloads/PGK/PGK-p6/external/glfw-2.7.6/lib/x11/x11_window.c -o CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.s
 
 external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o.requires:
 .PHONY : external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_window.c.o.requires
@@ -583,8 +586,8 @@ external/libGLFW_276.a: external/CMakeFiles/GLFW_276.dir/glfw-2.7.6/lib/x11/x11_
 external/libGLFW_276.a: external/CMakeFiles/GLFW_276.dir/build.make
 external/libGLFW_276.a: external/CMakeFiles/GLFW_276.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C static library libGLFW_276.a"
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && $(CMAKE_COMMAND) -P CMakeFiles/GLFW_276.dir/cmake_clean_target.cmake
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GLFW_276.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/luki/Downloads/PGK/PGK-p6/external && $(CMAKE_COMMAND) -P CMakeFiles/GLFW_276.dir/cmake_clean_target.cmake
+	cd /home/luki/Downloads/PGK/PGK-p6/external && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GLFW_276.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 external/CMakeFiles/GLFW_276.dir/build: external/libGLFW_276.a
@@ -614,10 +617,10 @@ external/CMakeFiles/GLFW_276.dir/requires: external/CMakeFiles/GLFW_276.dir/glfw
 .PHONY : external/CMakeFiles/GLFW_276.dir/requires
 
 external/CMakeFiles/GLFW_276.dir/clean:
-	cd /home/luki/Documents/PGK/p6/PGK-p6/external && $(CMAKE_COMMAND) -P CMakeFiles/GLFW_276.dir/cmake_clean.cmake
+	cd /home/luki/Downloads/PGK/PGK-p6/external && $(CMAKE_COMMAND) -P CMakeFiles/GLFW_276.dir/cmake_clean.cmake
 .PHONY : external/CMakeFiles/GLFW_276.dir/clean
 
 external/CMakeFiles/GLFW_276.dir/depend:
-	cd /home/luki/Documents/PGK/p6/PGK-p6 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/luki/Documents/PGK/p6/PGK-p6 /home/luki/Documents/PGK/p6/PGK-p6/external /home/luki/Documents/PGK/p6/PGK-p6 /home/luki/Documents/PGK/p6/PGK-p6/external /home/luki/Documents/PGK/p6/PGK-p6/external/CMakeFiles/GLFW_276.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/luki/Downloads/PGK/PGK-p6 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/luki/Downloads/PGK/PGK-p6 /home/luki/Downloads/PGK/PGK-p6/external /home/luki/Downloads/PGK/PGK-p6 /home/luki/Downloads/PGK/PGK-p6/external /home/luki/Downloads/PGK/PGK-p6/external/CMakeFiles/GLFW_276.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : external/CMakeFiles/GLFW_276.dir/depend
 
