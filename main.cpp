@@ -135,11 +135,10 @@ int main( int argc, char** argv )
 
   // Enable depth test
   glEnable(GL_DEPTH_TEST);
- // glEnable(GL_CULL_FACE);
+  glEnable(GL_CULL_FACE);
   // Accept fragment if it closer to the camera than the former one
   glDepthFunc(GL_LESS); 
   glFrontFace(GL_CCW);
-  glCullFace(GL_BACK);
 
   // Create and compile our GLSL program from the shaders
   GLuint programIDs[2] = { LoadShaders( "tvs.vertexshader", "cfs.fragmentshader" ), LoadShaders( "tvs2.vertexshader", "cfs.fragmentshader" )};
@@ -265,13 +264,13 @@ glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glm::mat4 Vw=MVP * glm::rotate( 
+    glm::mat4 Vw=MVP * glm::translate( glm::rotate( 
                                     glm::rotate(
                                                 glm::rotate(
-                                                              glm::translate(glm::mat4(1.0), vec3(-x,-y,z)),
+                                                              mat4(1.0),
                                                              oy, glm::vec3(0, 0, 1)),
                                                 ox, glm::vec3(1,0,0)),
-                                    oz, glm::vec3(0,1,0));
+                                    oz, glm::vec3(0,1,0)),vec3(-x,-y,z));
     glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &Vw[0][0]);
     glUniform1i(SideIDs[ball], side);
 
@@ -282,6 +281,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
     int ey = y/12010+90;
  //   std::cout << ex << " " << ey << std::endl;
     if(ball==0)
+    {
       for(int i = max(ex-3,0); i<= min(ex+3,360) ;i++)
         for(int j=max(ey-3,0); j<= min(ey+3,180); j++)
         {
@@ -302,7 +302,10 @@ glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
    //           << i << " "  << ex << " " << j << " " << ey << std::endl;
 
         }
+        glCullFace(GL_BACK);
+    }
     else
+    {
       for(int i=edges[0].second-4+180; i<edges[0].second+5+180;i++)
         for(int j=edges[0].first-4+90; j<edges[0].first+5+90;j++)
         {
@@ -322,6 +325,8 @@ glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
             draw(vaoObjects[point], vBOs[point], indexBufferObject, numberOfIndices);
           }
         }
+        glCullFace(GL_FRONT);
+    }
 
     // Swap buffers
     glfwSwapBuffers();
