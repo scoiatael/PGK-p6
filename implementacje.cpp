@@ -88,6 +88,12 @@ void InitGraphics()
 void loadVertices(const std::string& filename, std::vector<int>& arg, const bool& bin, const int& side, std::pair<int,int>& edge, int& height)
 {
   std::cout << "Loading vertices from " << filename << "...\n";
+  char r,p;
+  sscanf(filename.c_str(), "%c%d%c%d",&r, &edge.first, &p, &edge.second); 
+  if(r=='S' || r=='s')
+    edge.first*=-1;
+  if(p=='W' || p=='w')
+    edge.second*=-1;
   std::fstream file;
   memset(&arg[0], 0, sizeof(int)*side*side*3);
   int max_h=0;
@@ -136,12 +142,6 @@ void loadVertices(const std::string& filename, std::vector<int>& arg, const bool
   file.close();
   std::cout << "Done. Maximal height is " << max_h << "\n";
   height = max_h;
-  char r,p;
-  sscanf(filename.c_str(), "%c%d%c%d",&r, &edge.first, &p, &edge.second); 
-  if(r=='S')
-    edge.first*=-1;
-  if(p=='W')
-    edge.second*=-1;
   std::cout << "Edges are: " << edge.first << " " << edge.second << std::endl; 
 }
 

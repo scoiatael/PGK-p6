@@ -111,6 +111,9 @@ int main( int argc, char** argv )
   std::cout << "Linked shaders..\n";
   // Get a handle for our "MVP" uniform
   GLuint MatrixIDs[2] = {glGetUniformLocation(programIDs[0], "MVP"), glGetUniformLocation(programIDs[1], "MVP")};
+  GLuint EdgexIDs[2] = {glGetUniformLocation(programIDs[0], "Edgex"), glGetUniformLocation(programIDs[1], "Edgex")};
+  GLuint EdgeyIDs[2] = {glGetUniformLocation(programIDs[0], "Edgey"), glGetUniformLocation(programIDs[1], "Edgey")};
+  GLuint SideIDs[2] = {glGetUniformLocation(programIDs[0], "side"), glGetUniformLocation(programIDs[1], "side")};
   std::cout << "Got uniforms..\n";
   
   const int side(1201);
@@ -122,10 +125,10 @@ int main( int argc, char** argv )
 
   //Vertices:
   unsigned int numberOfVertices=side*side;
-  GLuint vaoObjects[vBOsize], vertexBufferObject, vBOs[vBOsize];
+  GLuint vaoObjects[vBOsize+1], vertexBufferObject, vBOs[vBOsize+1];
   std::vector<std::pair<int, int> > edges(vBOsize);
-  glGenVertexArrays(vBOsize, vaoObjects);
-  glGenBuffers(vBOsize, vBOs);
+  glGenVertexArrays(vBOsize+1, vaoObjects);
+  glGenBuffers(vBOsize+1, vBOs);
   int height;
   for(unsigned int i=0; i< vBOsize;i++)
   {
@@ -134,7 +137,7 @@ int main( int argc, char** argv )
     loadVertices(file_names[i], vertexPositionsVec, true, side, edges[i], height);
 //    edges[i].first-=edges[0].first;
 //    edges[i].second-=edges[0].second;
-    edges_vec.push_back(vec3(vertexPositionsVec[0], vertexPositionsVec[1], vertexPositionsVec[2]));
+//    edges_vec.push_back(vec3(vertexPositionsVec[0], vertexPositionsVec[1], vertexPositionsVec[2]));
     glBindVertexArray(vaoObjects[i]);
     glBindBuffer(GL_ARRAY_BUFFER, vBOs[i]);
     glVertexAttribPointer(
@@ -147,7 +150,19 @@ int main( int argc, char** argv )
     );
     glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
   }
-
+/*
+  //Black surface under everything:
+  glBindVertexArray(vaoObjects[vBOsize]);
+  glBindBuffer(GL_ARRAY_BUFFER,vBOs[vBOsize]);
+  glVertexAttribPointer(0,3,GL_INT,GL_FALSE,0,(void*)0);
+  int surf[] = {-180*side, 90*side,0,
+                -180*side, -90*side,0,
+                180*side, 90*side, 0,
+                180*side, 90*side, 0,
+                -180*side, -90*side, 0,
+                180*side, -90*side, 0 };
+  glBufferData(GL_ARRAY_BUFFER, sizeof(int)*6, surf, GL_STATIC_DRAW);
+*/
   //Indices::
   GLuint indexBufferObject, iBOs[maxLoD], numberOfIndices;
   std::vector<GLuint> nOIs(5);
@@ -220,14 +235,37 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glm::mat4 Vw=glm::rotate( glm::rotate(glm::translate(glm::mat4(1.0), vec3(x,y,z)), oy, glm::vec3(0, 0, 1)), ox, glm::vec3(1,0,0));
+    glm::mat4 Vw=MVP * glm::rotate( glm::rotate(glm::translate(glm::mat4(1.0), vec3(x,y,z)), oy, glm::vec3(0, 0, 1)), ox, glm::vec3(1,0,0));
+
+//    glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &Vw[0][0]);
+//    glUniform1i(SideIDs[ball], side);
+//    glUniform1i(EdgexIDs[ball], 180);
+//    glUniform1i(EdgeyIDs[ball], -90);
+//    glUniform1i(SideIDs[ball], side);
+//    glBindBuffer(GL_ARRAY_BUFFER, vBOs[vBOsize]);
+//    glBindVertexArray(vaoObjects[vBOsize]);
+//    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+
     indexBufferObject=iBOs[iBOindex];
     numberOfIndices=nOIs[iBOindex];
     for(unsigned int i=0; i<vBOsize;i++)
     {
-      glm::mat4 temp =  MVP * Vw * 
-        glm::translate(glm::mat4(1.0), vec3((edges[i].second-edges[0].second)*(side-5)*10, (edges[i].first-edges[0].first)*(side-5)*10,0)) ;
-      glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &temp[0][0]);
+      glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &Vw[0][0]);
+      glUniform1i(SideIDs[ball], side);
+      glUniform1i(EdgexIDs[ball], (edges[i].second-edges[0].second));
+      glUniform1i(EdgeyIDs[ball], (edges[i].first-edges[0].first));
+
+      int test;
+      glGetUniformiv(programIDs[ball], SideIDs[ball], &test);
+      std::cout << "side: " << test;
+
+      glGetUniformiv(programIDs[ball], EdgexIDs[ball], &test);
+      std::cout << " x: " << test;
+      glGetUniformiv(programIDs[ball], EdgeyIDs[ball], &test);
+      std::cout << " y: " << test << std::endl;
+
+
       draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
     }
 

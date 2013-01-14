@@ -2,6 +2,9 @@
 
 layout(location = 0) in vec3 vertexPosition;
 uniform mat4 MVP;
+uniform int Edgex;
+uniform int Edgey;
+uniform int side;
 
 out vec3 height;
 
@@ -9,16 +12,16 @@ float M_PI = 3.14159265359;
 
 void main()
 {	
-  vec4 temp = MVP * vec4(vec3(vertexPosition.x*10, (-1)*vertexPosition.y*10,vertexPosition.z), 1.0);
+  vec4 temp = vec4(vec3((vertexPosition.x*10+Edgex)*(side-5), ((-1)*vertexPosition.y*10+Edgey)*(side-5),vertexPosition.z), 1.0);
   float lon = temp.x/1201,
           lat = temp.y/1201,
-          R = 6400+temp.z/10;
+          R = 6400+temp.z/8;
   lat*=M_PI/180;
   lon*=M_PI/180;
-  temp.x = R * cos(lat) * sin(lon);
-  temp.y = R * sin(lat);
-  temp.z = R * cos(lon)*cos(lat)-R;
-  gl_Position =  temp;
+  temp.x = R * cos(lat) * sin(lon)+3*R/4;
+  temp.y = R * sin(lat)-3*R/4;
+  temp.z = R * cos(lon)*cos(lat)-R/2;
+  gl_Position =  MVP * temp;
   height = vertexPosition;
 }
 
