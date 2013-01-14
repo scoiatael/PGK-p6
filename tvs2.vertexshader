@@ -22,8 +22,8 @@ void main()
   lat*=M_PI/180;
   lon*=M_PI/180;
   temp.x = R * cos(lat) * sin(lon)+6000;
-  temp.y = R * sin(lat)-6000;
-  temp.z = R * cos(lon)*cos(lat)-3000;
+  temp.y = R * sin(lat)-10000;
+  temp.z = R * cos(lon)*cos(lat)-4000;
   gl_Position =  MVP * vec4(temp,1.0);
   height = vertexPosition;
 }

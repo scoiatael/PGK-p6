@@ -6,7 +6,7 @@ const int maxLoD(10);
 bool autolod=false;
 const double optfps(20);
 char ball=0;
-
+int startx, starty;
 
 inline int min(int a, int b)
 {
@@ -99,8 +99,16 @@ void GLFWCALL Key_Callback(int key, int action)
         oy=0;
         ox=0;
         z=0;
-        y=0;
-        x=0;
+        if(ball==0)
+        {
+          x=startx;
+          y=starty;
+        }
+        else
+        {
+          y=0;
+          x=0;
+        }
         break;
 
 
@@ -127,7 +135,7 @@ int main( int argc, char** argv )
 
   // Enable depth test
   glEnable(GL_DEPTH_TEST);
-  glEnable(GL_CULL_FACE);
+ // glEnable(GL_CULL_FACE);
   // Accept fragment if it closer to the camera than the former one
   glDepthFunc(GL_LESS); 
   glFrontFace(GL_CCW);
@@ -177,7 +185,8 @@ int main( int argc, char** argv )
     glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
     if(i<vBOsize-1)
     {
-      piece_map[edges[i].second-edges[0].second+180][edges[i].first-edges[0].first+90]=i;
+      piece_map[edges[i].second+180][edges[i].first+90]=i;
+      std::cout << edges[i].second+180 << " " << edges[i].first+90 << std::endl;
     }
   }
 
@@ -222,6 +231,11 @@ glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
   double last_time = glfwGetTime(), last_reset=last_time;
   int FPScounter=0;
 
+  x = edges[0].second*12010;
+  startx=x;
+  y = edges[0].first*12010;
+  starty=y;
+  std::cout << edges[0].first << " " << edges[0].second << std::endl;
   do{
     //time statistics:
     FPScounter++;
@@ -283,14 +297,14 @@ glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
           {
             point = piece_map[i][j];
             draw(vaoObjects[point], vBOs[point], indexBufferObject, numberOfIndices);
-//            std::cout << "Drawing " << file_names[point] << "with mods " << i-180 << " " << j-90 << std::endl
-//              << i << " "  << ex << " " << j << " " << ey << std::endl;
           }
+   //         std::cout << "Drawing " << file_names[point] << "with mods " << i-180 << " " << j-90 << std::endl
+   //           << i << " "  << ex << " " << j << " " << ey << std::endl;
 
         }
     else
-      for(int i=178; i<184;i++)
-        for(int j=88; j<94;j++)
+      for(int i=edges[0].second-4+180; i<edges[0].second+5+180;i++)
+        for(int j=edges[0].first-4+90; j<edges[0].first+5+90;j++)
         {
 
           glUniform1i(EdgexIDs[ball], (i-180));
