@@ -1,13 +1,27 @@
 #include "definicje.h"
 int x,y,z;
 unsigned int iBOindex;
-float ox, oy;
+float ox, oy,oz;
 const int maxLoD(10);
 bool autolod=false;
 const double optfps(20);
 char ball=0;
 
 
+inline int min(int a, int b)
+{
+  if(a<b)
+    return a;
+  else
+    return b;
+}
+inline int max(int a, int b)
+{
+  if(a>b)
+    return a;
+  else
+    return b;
+}
 void draw(GLuint& vaoObject, GLuint& vertexBufferObject, GLuint& indexBufferObject, unsigned int numberOfVertices)
 {
     glBindVertexArray(vaoObject);
@@ -62,6 +76,12 @@ void GLFWCALL Key_Callback(int key, int action)
       case 'G':
         oy-=5;
         break;
+      case 'Y':
+        oz+=5;
+        break;
+      case 'H':
+        oz-=5;
+        break;
       case GLFW_KEY_UP:
         iBOindex+=1;
         iBOindex%=maxLoD;
@@ -75,6 +95,12 @@ void GLFWCALL Key_Callback(int key, int action)
         break;
       case GLFW_KEY_ENTER:
         ball=1-ball;
+        oz=0;
+        oy=0;
+        ox=0;
+        z=0;
+        y=0;
+        x=0;
         break;
 
 
@@ -88,6 +114,7 @@ int main( int argc, char** argv )
   std::cout << "Starting..\n";
   std::vector<std::string> file_names;
   parse_args(argc, argv, file_names);
+  file_names.push_back(std::string("b0e0.hgt"));
   InitGraphics();
 
   glfwSetWindowTitle( "p6" );
@@ -96,7 +123,7 @@ int main( int argc, char** argv )
   glfwEnable( GLFW_STICKY_KEYS );
 
   // Dark blue background
-  glClearColor(0.0f, 0.0f, 0.5f, 0.0f);
+  glClearColor(0.7f, 0.7f, 0.7f, 0.0f);
 
   // Enable depth test
   glEnable(GL_DEPTH_TEST);
@@ -119,25 +146,24 @@ int main( int argc, char** argv )
   const int side(1201);
   const int vBOsize(file_names.size());
 
-//DEBUG
-  std::vector< vec3 > edges_vec;
 
 
   //Vertices:
+  short piece_map[360][180];
+  for(int i=0; i<360; i++)
+    for(int y=0; y<180; y++)
+      piece_map[i][y] = -1;
   unsigned int numberOfVertices=side*side;
   GLuint vaoObjects[vBOsize+1], vertexBufferObject, vBOs[vBOsize+1];
-  std::vector<std::pair<int, int> > edges(vBOsize);
+  std::vector<std::pair<int, int> > edges(vBOsize+1);
   glGenVertexArrays(vBOsize+1, vaoObjects);
   glGenBuffers(vBOsize+1, vBOs);
   int height;
-  for(unsigned int i=0; i< vBOsize;i++)
+  for(short i=0; i< vBOsize;i++)
   {
     std::vector< int > vertexPositionsVec(3*numberOfVertices);
     int* vertexPositions = &vertexPositionsVec[0];
     loadVertices(file_names[i], vertexPositionsVec, true, side, edges[i], height);
-//    edges[i].first-=edges[0].first;
-//    edges[i].second-=edges[0].second;
-//    edges_vec.push_back(vec3(vertexPositionsVec[0], vertexPositionsVec[1], vertexPositionsVec[2]));
     glBindVertexArray(vaoObjects[i]);
     glBindBuffer(GL_ARRAY_BUFFER, vBOs[i]);
     glVertexAttribPointer(
@@ -149,20 +175,12 @@ int main( int argc, char** argv )
           (void*)0            // array buffer offset
     );
     glBufferData(GL_ARRAY_BUFFER, sizeof(int)*3*numberOfVertices, vertexPositions, GL_STATIC_DRAW);
+    if(i<vBOsize-1)
+    {
+      piece_map[edges[i].second-edges[0].second+180][edges[i].first-edges[0].first+90]=i;
+    }
   }
-/*
-  //Black surface under everything:
-  glBindVertexArray(vaoObjects[vBOsize]);
-  glBindBuffer(GL_ARRAY_BUFFER,vBOs[vBOsize]);
-  glVertexAttribPointer(0,3,GL_INT,GL_FALSE,0,(void*)0);
-  int surf[] = {-180*side, 90*side,0,
-                -180*side, -90*side,0,
-                180*side, 90*side, 0,
-                180*side, 90*side, 0,
-                -180*side, -90*side, 0,
-                180*side, -90*side, 0 };
-  glBufferData(GL_ARRAY_BUFFER, sizeof(int)*6, surf, GL_STATIC_DRAW);
-*/
+
   //Indices::
   GLuint indexBufferObject, iBOs[maxLoD], numberOfIndices;
   std::vector<GLuint> nOIs(5);
@@ -181,7 +199,7 @@ int main( int argc, char** argv )
   // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
   glm::mat4 Projection = 
    // glm::mat4(1.0f);
-glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
+glm::perspective(45.0f, 4.0f / 3.0f, 100.f, 30000.0f);
   // Camera matrix
 //  int xVw = edges[0].first*side, yVw = edges[0].second*side;
   int xVw = 6000, yVw = -6000;
@@ -204,9 +222,6 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
   double last_time = glfwGetTime(), last_reset=last_time;
   int FPScounter=0;
 
-  //DEBUG
-//  vec4 tempD = test_tvs_coords(MVP* glm::translate(glm::mat4(1.0), vec3((edges[0].second-edges[0].second)*(side-5)*10, (edges[0].first-edges[0].first)*(side-5)*10,0)),edges_vec[0]);
-//  std::cout << "1st pos: " << tempD.x << " " << tempD.y << " " << tempD.z << std::endl;
   do{
     //time statistics:
     FPScounter++;
@@ -215,6 +230,7 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
     {
       double FPS = (float)FPScounter/(cur_time-last_reset);
       std::cout << "FPS: " << FPS << " lod: " << iBOindex << std::endl;
+      std::cout << x/1201+180 << " " << y/1201+90 << " " << z << "\n";
       if(autolod && abs(FPS-optfps)>4)
       {
         if(FPS<optfps && iBOindex<maxLoD)
@@ -235,39 +251,63 @@ glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 30000.0f);
 
     // Send our transformation to the currently bound shader, 
     // in the "MVP" uniform
-    glm::mat4 Vw=MVP * glm::rotate( glm::rotate(glm::translate(glm::mat4(1.0), vec3(x,y,z)), oy, glm::vec3(0, 0, 1)), ox, glm::vec3(1,0,0));
-
-//    glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &Vw[0][0]);
-//    glUniform1i(SideIDs[ball], side);
-//    glUniform1i(EdgexIDs[ball], 180);
-//    glUniform1i(EdgeyIDs[ball], -90);
-//    glUniform1i(SideIDs[ball], side);
-//    glBindBuffer(GL_ARRAY_BUFFER, vBOs[vBOsize]);
-//    glBindVertexArray(vaoObjects[vBOsize]);
-//    glDrawArrays(GL_TRIANGLES, 0, 6);
-
+    glm::mat4 Vw=MVP * glm::rotate( 
+                                    glm::rotate(
+                                                glm::rotate(
+                                                              glm::translate(glm::mat4(1.0), vec3(-x,-y,z)),
+                                                             oy, glm::vec3(0, 0, 1)),
+                                                ox, glm::vec3(1,0,0)),
+                                    oz, glm::vec3(0,1,0));
+    glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &Vw[0][0]);
+    glUniform1i(SideIDs[ball], side);
 
     indexBufferObject=iBOs[iBOindex];
     numberOfIndices=nOIs[iBOindex];
-    for(unsigned int i=0; i<vBOsize;i++)
-    {
-      glUniformMatrix4fv(MatrixIDs[ball], 1, GL_FALSE, &Vw[0][0]);
-      glUniform1i(SideIDs[ball], side);
-      glUniform1i(EdgexIDs[ball], (edges[i].second-edges[0].second));
-      glUniform1i(EdgeyIDs[ball], (edges[i].first-edges[0].first));
 
-      int test;
-      glGetUniformiv(programIDs[ball], SideIDs[ball], &test);
-      std::cout << "side: " << test;
+    int ex = x/12010+180;
+    int ey = y/12010+90;
+ //   std::cout << ex << " " << ey << std::endl;
+    if(ball==0)
+      for(int i = max(ex-3,0); i<= min(ex+3,360) ;i++)
+        for(int j=max(ey-3,0); j<= min(ey+3,180); j++)
+        {
+          glUniform1i(EdgexIDs[ball], (i-180));
+          glUniform1i(EdgeyIDs[ball], (j-90));
+          int point;
+          if(piece_map[i][j]==-1)
+          {
+            point=vBOsize-1;
+            draw(vaoObjects[point], vBOs[point], iBOs[maxLoD-1], nOIs[maxLoD-1]);
+          }
+          else
+          {
+            point = piece_map[i][j];
+            draw(vaoObjects[point], vBOs[point], indexBufferObject, numberOfIndices);
+//            std::cout << "Drawing " << file_names[point] << "with mods " << i-180 << " " << j-90 << std::endl
+//              << i << " "  << ex << " " << j << " " << ey << std::endl;
+          }
 
-      glGetUniformiv(programIDs[ball], EdgexIDs[ball], &test);
-      std::cout << " x: " << test;
-      glGetUniformiv(programIDs[ball], EdgeyIDs[ball], &test);
-      std::cout << " y: " << test << std::endl;
+        }
+    else
+      for(int i=178; i<184;i++)
+        for(int j=88; j<94;j++)
+        {
 
+          glUniform1i(EdgexIDs[ball], (i-180));
+          glUniform1i(EdgeyIDs[ball], (j-90));
 
-      draw(vaoObjects[i], vBOs[i], indexBufferObject, numberOfIndices);
-    }
+          int point;
+          if(piece_map[i][j]==-1)
+          {
+            point=vBOsize-1;
+            draw(vaoObjects[point], vBOs[point], iBOs[6], nOIs[6]);
+          }
+          else
+          {
+            point = piece_map[i][j];
+            draw(vaoObjects[point], vBOs[point], indexBufferObject, numberOfIndices);
+          }
+        }
 
     // Swap buffers
     glfwSwapBuffers();

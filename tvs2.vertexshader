@@ -12,16 +12,19 @@ float M_PI = 3.14159265359;
 
 void main()
 {	
-  vec4 temp = vec4(vec3((vertexPosition.x*10+Edgex)*(side-5), ((-1)*vertexPosition.y*10+Edgey)*(side-5),vertexPosition.z), 1.0);
-  float lon = temp.x/1201,
-          lat = temp.y/1201,
-          R = 6400+temp.z/8;
+  vec3 temp = vertexPosition;
+  float lon = Edgex+temp.x/side,
+          lat = Edgey-temp.y/side,
+          R = 6400+temp.z/10;
+  float mod = 10; 
+  lat*=mod;
+  lon*=mod;
   lat*=M_PI/180;
   lon*=M_PI/180;
-  temp.x = R * cos(lat) * sin(lon)+3*R/4;
-  temp.y = R * sin(lat)-3*R/4;
-  temp.z = R * cos(lon)*cos(lat)-R/2;
-  gl_Position =  MVP * temp;
+  temp.x = R * cos(lat) * sin(lon)+6000;
+  temp.y = R * sin(lat)-6000;
+  temp.z = R * cos(lon)*cos(lat)-3000;
+  gl_Position =  MVP * vec4(temp,1.0);
   height = vertexPosition;
 }
 
